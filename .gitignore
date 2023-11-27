@@ -1,0 +1,30 @@
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variable files
+.env
+
+# Output of 'npm pack'
+*.tgz
+
+# Build output
+build/
+dist/
+out/
+*.exe
+*.msi
+*.dmg
