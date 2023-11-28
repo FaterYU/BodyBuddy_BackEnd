@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const Moment = sequelize.define("moment", {
+  const Moments = sequelize.define("moments", {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -45,5 +45,5 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DATE,
     },
   });
-  return Moment;
+  return Moments;
 };

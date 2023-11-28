@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const Fit = sequelize.define("fit", {
+  const Fits = sequelize.define("fits", {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -27,5 +27,5 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
     },
   });
-  return Fit;
+  return Fits;
 };
