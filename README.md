@@ -1,5 +1,7 @@
 # BodyBuddy_BackEnd
 
+![example workflow](https://github.com/FaterYU/BodyBuddy_BackEnd/actions/workflows/main_ci.yaml/badge.svg)
+
 [BodyBuddy](https://github.com/FaterYU/BodyBuddy) 的后端项目
 
 ## 依赖
