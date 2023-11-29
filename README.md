@@ -66,3 +66,7 @@ yarn start
 - `README.md`：项目说明文件
 - `.gitignore`： Git 忽略文件
 - `yarn.lock`： yarn 锁定文件
+
+## 接口示例
+
+安装 [postman](https://www.postman.com/downloads/)，导入 [BodyBuddy.postman_collection.json](./BodyBuddy.postman_collection.json) 文件，即可查看接口示例
