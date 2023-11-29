@@ -32,6 +32,12 @@ module.exports = (sequelize, Sequelize) => {
     calendar: {
       type: Sequelize.JSON,
     },
+    /**
+     * @param {JSON} infomation
+     * @param {String} infomation.gender - male/female
+     * @param {Float} infomation.weight - Number
+     * @param {Float} infomation.height - Number
+     */
     infomation: {
       type: Sequelize.JSON,
     },
