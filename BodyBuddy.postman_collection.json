@@ -1,0 +1,302 @@
+{
+	"info": {
+		"_postman_id": "9f976501-81bb-402f-b89b-bcd93f55dd0d",
+		"name": "BodyBuddy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20262088"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:12647/api/users/findAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"findAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"LiHua\",\r\n    \"email\": \"google@gmail.com\",\r\n    \"password\": \"lihua123\",\r\n    \"phone\": \"123456789123\",\r\n    \"photo\": \"lihua.jpg\",\r\n    \"infomation\":{\r\n        \"gender\": \"male\",\r\n        \"weight\": 71.51,\r\n        \"height\": 190.02\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findOne",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/findOne",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"findOne"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 3,\r\n    \"userName\": \"ZhangSan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getName",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/getName",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"getName"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "courses",
+			"item": [
+				{
+					"name": "createPose",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Deep Squat\",\r\n    \"photo\": \"deep_squat.jpg\",\r\n    \"content\": {\r\n        \"key point\": \"Push-ups on a mat, back straight, body in a straight line when viewed from the side, hands propped up on either side of the chest, slightly wider than shoulder width apart. Bend your arms until your elbows are slightly higher than your torso, and then extend your arms up and back down.\",\r\n        \"breath\": \"Bend the arm and inhale, extend the arm and exhale.\",\r\n        \"feeling\": \"Soreness in the chest, anterior shoulder and posterior aspect of the great arm.\",\r\n        \"wrong\": \"Hyperextension and locking of the elbow joint during arm extension. Collapsing or puckering of the hips during training.\"\r\n    },\r\n    \"tags\": {\r\n        \"muscle\": [\r\n            \"triceps muscle of arm\",\r\n            \"Medial and inferior fasciculus pectoralis\"\r\n        ]\r\n    },\r\n    \"repetition\": 12,\r\n    \"like\": 581,\r\n    \"practiced\": 7\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/courses/createPose",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"courses",
+								"createPose"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAllPose",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:12647/api/courses/findAllPose",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"courses",
+								"findAllPose"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePose",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"like\": 582\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/courses/updatePose",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"courses",
+								"updatePose"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePose",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/courses/deletePose",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"courses",
+								"deletePose"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
