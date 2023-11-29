@@ -6,5 +6,12 @@ module.exports = (app) => {
   router.put("/updatePose", courses.updatePose);
   router.delete("/deletePose", courses.deletePose);
 
+  router.get("/findAllCourse", courses.findAllCourse);
+  router.post("/createCourse", courses.createCourse);
+  router.put("/updateCourse", courses.updateCourse);
+  router.delete("/deleteCourse", courses.deleteCourse);
+  router.get("/getCourseList", courses.getCourseList);
+  router.post("/getCourseNameById", courses.getCourseNameById);
+
   app.use("/api/courses", router);
 };

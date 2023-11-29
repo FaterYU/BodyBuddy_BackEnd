@@ -192,7 +192,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Deep Squat\",\r\n    \"photo\": \"deep_squat.jpg\",\r\n    \"content\": {\r\n        \"key point\": \"Push-ups on a mat, back straight, body in a straight line when viewed from the side, hands propped up on either side of the chest, slightly wider than shoulder width apart. Bend your arms until your elbows are slightly higher than your torso, and then extend your arms up and back down.\",\r\n        \"breath\": \"Bend the arm and inhale, extend the arm and exhale.\",\r\n        \"feeling\": \"Soreness in the chest, anterior shoulder and posterior aspect of the great arm.\",\r\n        \"wrong\": \"Hyperextension and locking of the elbow joint during arm extension. Collapsing or puckering of the hips during training.\"\r\n    },\r\n    \"tags\": {\r\n        \"muscle\": [\r\n            \"triceps muscle of arm\",\r\n            \"Medial and inferior fasciculus pectoralis\"\r\n        ]\r\n    },\r\n    \"repetition\": 12,\r\n    \"like\": 581,\r\n    \"practiced\": 7\r\n}",
+							"raw": "{\r\n    \"name\": \"Push-up\",\r\n    \"photo\": \"push_up.jpg\",\r\n    \"content\": {\r\n        \"key point\": \"Push-ups on a mat, back straight, body in a straight line when viewed from the side, hands propped up on either side of the chest, slightly wider than shoulder width apart. Bend your arms until your elbows are slightly higher than your torso, and then extend your arms up and back down.\",\r\n        \"breath\": \"Bend the arm and inhale, extend the arm and exhale.\",\r\n        \"feeling\": \"Soreness in the chest, anterior shoulder and posterior aspect of the great arm.\",\r\n        \"wrong\": \"Hyperextension and locking of the elbow joint during arm extension. Collapsing or puckering of the hips during training.\"\r\n    },\r\n    \"tags\": {\r\n        \"muscle\": [\r\n            \"triceps muscle of arm\",\r\n            \"Medial and inferior fasciculus pectoralis\"\r\n        ]\r\n    },\r\n    \"repetition\": 12,\r\n    \"like\": 581,\r\n    \"practiced\": 7,\r\n    \"video\": \"push_up.mp4\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -243,7 +243,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"like\": 582\r\n}",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"push-up\",\r\n    \"photo\": \"push_up.jpg\",\r\n    \"video\": \"push_up.mp4\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -291,6 +291,168 @@
 								"api",
 								"courses",
 								"deletePose"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAllCourse",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:12647/api/courses/findAllCourse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"courses",
+								"findAllCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createCourse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Push-up training • Upper body strength burst more easily!\",\r\n    \"photo\": \"push_up_training.jpg\",\r\n    \"content\": {\r\n        \"poseList\": [1,1,1],\r\n        \"description\": \"This class will be the final step in your metamorphosis from 'Patch Push-Up' to 'Standard Push-Up' trainer! Strengthen your upper body with bottom pauses and explosive breakthrough exercises to easily hold up a standard push-up. Once you can easily complete this session or 3-5 standard push-ups in a single session, you can move on to the K3 Push-up Challenge! training, and reap the benefits of tight, powerful muscle tone.\",\r\n        \"class\": [\"Muscle strength\", \"Push-up\"],\r\n        \"suitable\": [\"Introductory push-up trainer\"],\r\n        \"prepare\": [\"Don't eat too much before training, or training may cause abdominal discomfort.\"],\r\n        \"reaction\": [\"It is normal to experience shortness of breath and localised muscle soreness during training; if you are unable to complete the training or it is very difficult to do so, it means that the course is too difficult for you at this stage and it is recommended that you choose a simpler muscle strength training course.\"]\r\n    },\r\n    \"duration\": 660,\r\n    \"infomation\": {\r\n        \"calorie\": 46,\r\n        \"practiced\": 792000,\r\n        \"tags\": [\r\n            \"vip\"\r\n        ],\r\n        \"score\": 8.6,\r\n        \"level\": 2\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/courses/createCourse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"courses",
+								"createCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCourse",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"duration\": 661\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/courses/updateCourse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"courses",
+								"updateCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCourse",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/courses/deleteCourse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"courses",
+								"deleteCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCourseList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:12647/api/courses/getCourseList",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"courses",
+								"getCourseList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCourseNameById",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/courses/getCourseNameById",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"courses",
+								"getCourseNameById"
 							]
 						}
 					},

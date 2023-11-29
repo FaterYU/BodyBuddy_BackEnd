@@ -26,6 +26,9 @@ module.exports = (sequelize, Sequelize) => {
     practiced: {
       type: Sequelize.INTEGER,
     },
+    video: {
+      type: Sequelize.STRING,
+    },
   });
   return Poses;
 };
