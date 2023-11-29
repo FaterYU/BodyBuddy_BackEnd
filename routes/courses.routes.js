@@ -1,9 +1,10 @@
 module.exports = (app) => {
   const courses = require("../controllers/courses.controller.js");
   var router = require("express").Router();
-  //   // Create a new Course
-  //   router.post("/", courses.create);
-  // Retrieve all Courses
-  router.get("/", courses.findAll);
+  router.get("/findAllPose", courses.findAllPose);
+  router.post("/createPose", courses.createPose);
+  router.put("/updatePose", courses.updatePose);
+  router.delete("/deletePose", courses.deletePose);
+
   app.use("/api/courses", router);
 };
