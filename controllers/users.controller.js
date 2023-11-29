@@ -133,3 +133,51 @@ exports.getName = (req, res) => {
       });
     });
 };
+exports.login = (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  Users.findOne({
+    where: { email: email, password: password },
+    attributes: ["uid"],
+  })
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: "Not found User with email " + email,
+        });
+        return null;
+      } else {
+        return data.uid;
+      }
+    })
+    .then((uid) => {
+      if (uid == null) return;
+      Users.update({ LastLogin: new Date() }, { where: { uid: uid } });
+      return uid;
+    })
+    .then((uid) => {
+      if (uid == null) return;
+      Users.findByPk(uid)
+        .then((data) => {
+          if (!data) {
+            res.status(404).send({
+              message: "Not found User with id " + uid,
+            });
+          } else {
+            res.send(data);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).send({
+            message: "Error retrieving User with id=" + uid,
+          });
+        });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving User with email=" + email,
+      });
+    });
+};
