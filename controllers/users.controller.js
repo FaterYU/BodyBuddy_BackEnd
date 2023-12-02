@@ -1,6 +1,11 @@
+const express = require("express");
 const db = require("../models");
 const Users = db.users;
 const Op = db.Sequelize.Op;
+const Courses = db.courses;
+const Poses = db.poses;
+const Moments = db.moments;
+const Fits = db.fits;
 
 // Create and Save a new User
 exports.create = (req, res) => {
@@ -15,10 +20,15 @@ exports.create = (req, res) => {
     email: req.body.email,
     password: req.body.password,
     phone: req.body.phone,
+    password: req.body.password,
     photo: req.body.photo,
     role: "user",
+    courses: { courseList: [] },
+    follow: { followList: [] },
+    calendar: { calendarList: [] },
     infomation: req.body.infomation,
     level: "1",
+    feature: { likeCourse: [], likePose: [], likeMoment: [] },
     LastLogin: new Date(),
   };
   Users.create(users)
@@ -178,6 +188,603 @@ exports.login = (req, res) => {
       console.log(err);
       res.status(500).send({
         message: "Error retrieving User with email=" + email,
+      });
+    });
+};
+exports.follow = (req, res) => {
+  const uid = req.body.uid;
+  Users.findByPk(uid)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: "Not found User with id " + uid,
+        });
+      } else {
+        return data.follow;
+      }
+    })
+    .then((follow) => {
+      if (follow == null) return;
+      const followList = follow.followList;
+      const followId = req.body.followId;
+      if (followList.includes(followId)) {
+        res.send({ message: "Already followed" });
+        return;
+      }
+      followList.push(followId);
+      Users.update(
+        { follow: { followList: followList } },
+        { where: { uid: uid } }
+      );
+      res.send({ message: "Followed" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving User with id=" + uid,
+      });
+    });
+};
+exports.unfollow = (req, res) => {
+  const uid = req.body.uid;
+  Users.findByPk(uid)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: "Not found User with id " + uid,
+        });
+      } else {
+        return data.follow;
+      }
+    })
+    .then((follow) => {
+      if (follow == null) return;
+      const followList = follow.followList;
+      const followId = req.body.followId;
+      if (!followList.includes(followId)) {
+        res.send({ message: "Already unfollowed" });
+        return;
+      }
+      followList.splice(followList.indexOf(followId), 1);
+      Users.update(
+        { follow: { followList: followList } },
+        { where: { uid: uid } }
+      );
+      res.send({ message: "Unfollowed" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving User with id=" + uid,
+      });
+    });
+};
+exports.getFollowList = (req, res) => {
+  const uid = req.body.uid;
+  Users.findByPk(uid)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: "Not found User with id " + uid,
+        });
+      } else {
+        return data.follow;
+      }
+    })
+    .then((follow) => {
+      if (follow == null) return;
+      const followList = follow.followList;
+      Users.findAll({
+        where: { uid: { [Op.in]: followList } },
+        attributes: ["uid", "userName", "photo"],
+      })
+        .then((data) => {
+          res.send(data);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).send({
+            message: "Error retrieving User with id=" + uid,
+          });
+        });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving User with id=" + uid,
+      });
+    });
+};
+exports.getFollowedList = (req, res) => {
+  const uid = req.body.uid;
+  Users.findAll({
+    where: { follow: { [Op.like]: `%${uid}%` } },
+    attributes: ["uid", "userName", "photo"],
+  })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving User with id=" + uid,
+      });
+    });
+};
+exports.likeCourse = (req, res) => {
+  const uid = req.body.uid;
+  Users.findByPk(uid)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: "Not found User with id " + uid,
+        });
+      } else {
+        return data.feature;
+      }
+    })
+    .then((feature) => {
+      if (feature == null) return;
+      const likeCourse = feature.likeCourse;
+      const courseId = req.body.courseId;
+      if (likeCourse.includes(courseId)) {
+        res.send({ message: "Already liked" });
+        return;
+      }
+      likeCourse.push(courseId);
+      Courses.findByPk(courseId)
+        .then((data) => {
+          if (!data) {
+            res.status(404).send({
+              message: "Not found Course with id " + courseId,
+            });
+          } else {
+            return data.like;
+          }
+        })
+        .then((like) => {
+          if (like == null) return;
+          like += 1;
+          Courses.update({ like: like }, { where: { id: courseId } });
+        });
+      Users.update(
+        { feature: { likeCourse: likeCourse } },
+        { where: { uid: uid } }
+      );
+      res.send({ message: "Liked" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving User with id=" + uid,
+      });
+    });
+};
+exports.unlikeCourse = (req, res) => {
+  const uid = req.body.uid;
+  Users.findByPk(uid)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: "Not found User with id " + uid,
+        });
+      } else {
+        return data.feature;
+      }
+    })
+    .then((feature) => {
+      if (feature == null) return;
+      const likeCourse = feature.likeCourse;
+      const courseId = req.body.courseId;
+      if (!likeCourse.includes(courseId)) {
+        res.send({ message: "Already unliked" });
+        return;
+      }
+      likeCourse.splice(likeCourse.indexOf(courseId), 1);
+      Courses.findByPk(courseId)
+        .then((data) => {
+          if (!data) {
+            res.status(404).send({
+              message: "Not found Course with id " + courseId,
+            });
+          } else {
+            return data.like;
+          }
+        })
+        .then((like) => {
+          if (like == null) return;
+          like -= 1;
+          Courses.update({ like: like }, { where: { id: courseId } });
+        });
+      Users.update(
+        { feature: { likeCourse: likeCourse } },
+        { where: { uid: uid } }
+      );
+      res.send({ message: "Unliked" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving User with id=" + uid,
+      });
+    });
+};
+exports.checkLikeCourse = (req, res) => {
+  const uid = req.body.uid;
+  const courseId = req.body.courseId;
+  Users.findByPk(uid)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: "Not found User with id " + uid,
+        });
+      } else {
+        return data.feature;
+      }
+    })
+    .then((feature) => {
+      if (feature == null) return;
+      const likeCourse = feature.likeCourse;
+      if (likeCourse.includes(courseId)) {
+        res.send({ message: "Liked" });
+        return;
+      }
+      res.send({ message: "Unliked" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving User with id=" + uid,
+      });
+    });
+};
+exports.likePose = (req, res) => {
+  const uid = req.body.uid;
+  Users.findByPk(uid)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: "Not found User with id " + uid,
+        });
+      } else {
+        return data.feature;
+      }
+    })
+    .then((feature) => {
+      if (feature == null) return;
+      const likePose = feature.likePose;
+      const poseId = req.body.poseId;
+      if (likePose.includes(poseId)) {
+        res.send({ message: "Already liked" });
+        return;
+      }
+      likePose.push(poseId);
+      Poses.findByPk(poseId)
+        .then((data) => {
+          if (!data) {
+            res.status(404).send({
+              message: "Not found Pose with id " + poseId,
+            });
+          } else {
+            return data.like;
+          }
+        })
+        .then((like) => {
+          if (like == null) return;
+          like += 1;
+          Poses.update({ like: like }, { where: { id: poseId } });
+        });
+      Users.update(
+        { feature: { likePose: likePose } },
+        { where: { uid: uid } }
+      );
+      res.send({ message: "Liked" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving User with id=" + uid,
+      });
+    });
+};
+exports.unlikePose = (req, res) => {
+  const uid = req.body.uid;
+  Users.findByPk(uid)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: "Not found User with id " + uid,
+        });
+      } else {
+        return data.feature;
+      }
+    })
+    .then((feature) => {
+      if (feature == null) return;
+      const likePose = feature.likePose;
+      const poseId = req.body.poseId;
+      if (!likePose.includes(poseId)) {
+        res.send({ message: "Already unliked" });
+        return;
+      }
+      likePose.splice(likePose.indexOf(poseId), 1);
+      Poses.findByPk(poseId)
+        .then((data) => {
+          if (!data) {
+            res.status(404).send({
+              message: "Not found Pose with id " + poseId,
+            });
+          } else {
+            return data.like;
+          }
+        })
+        .then((like) => {
+          if (like == null) return;
+          like -= 1;
+          Poses.update({ like: like }, { where: { id: poseId } });
+        });
+      Users.update(
+        { feature: { likePose: likePose } },
+        { where: { uid: uid } }
+      );
+      res.send({ message: "Unliked" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving User with id=" + uid,
+      });
+    });
+};
+exports.checkLikePose = (req, res) => {
+  const uid = req.body.uid;
+  const poseId = req.body.poseId;
+  Users.findByPk(uid)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: "Not found User with poseId " + uid,
+        });
+      } else {
+        return data.feature;
+      }
+    })
+    .then((feature) => {
+      if (feature == null) return;
+      const likePose = feature.likePose;
+      if (likePose.includes(poseId)) {
+        res.send({ message: "Liked" });
+        return;
+      }
+      res.send({ message: "Unliked" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving User with poseId=" + uid,
+      });
+    });
+};
+exports.likeMoment = (req, res) => {
+  const uid = req.body.uid;
+  Users.findByPk(uid)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: "Not found Moment with id " + uid,
+        });
+      } else {
+        return data.feature;
+      }
+    })
+    .then((feature) => {
+      if (feature == null) return;
+      const likeMoment = feature.likeMoment;
+      const momentId = req.body.momentId;
+      if (likeMoment.includes(momentId)) {
+        res.send({ message: "Already liked" });
+        return;
+      }
+      likeMoment.push(momentId);
+      Moments.findByPk(momentId)
+        .then((data) => {
+          if (!data) {
+            res.status(404).send({
+              message: "Not found Moment with id " + momentId,
+            });
+          } else {
+            return data.like;
+          }
+        })
+        .then((like) => {
+          if (like == null) return;
+          like += 1;
+          Moments.update({ like: like }, { where: { id: momentId } });
+        });
+      Users.update(
+        { feature: { likeMoment: likeMoment } },
+        { where: { uid: uid } }
+      );
+      res.send({ message: "Liked" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving Moment with id=" + uid,
+      });
+    });
+};
+exports.unlikeMoment = (req, res) => {
+  const uid = req.body.uid;
+  Users.findByPk(uid)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: "Not found Moment with id " + uid,
+        });
+      } else {
+        return data.feature;
+      }
+    })
+    .then((feature) => {
+      if (feature == null) return;
+      const likeMoment = feature.likeMoment;
+      const momentId = req.body.momentId;
+      if (!likeMoment.includes(momentId)) {
+        res.send({ message: "Already unliked" });
+        return;
+      }
+      likeMoment.splice(likeMoment.indexOf(momentId), 1);
+      Moments.findByPk(momentId)
+        .then((data) => {
+          if (!data) {
+            res.status(404).send({
+              message: "Not found Moment with id " + momentId,
+            });
+          } else {
+            return data.like;
+          }
+        })
+        .then((like) => {
+          if (like == null) return;
+          like -= 1;
+          Moments.update({ like: like }, { where: { id: momentId } });
+        });
+      Users.update(
+        { feature: { likeMoment: likeMoment } },
+        { where: { uid: uid } }
+      );
+      res.send({ message: "Unliked" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving Moment with id=" + uid,
+      });
+    });
+};
+exports.checkLikeMoment = (req, res) => {
+  const uid = req.body.uid;
+  const momentId = req.body.momentId;
+  Users.findByPk(uid)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: "Not found Moment with id " + uid,
+        });
+      } else {
+        return data.feature;
+      }
+    })
+    .then((feature) => {
+      if (feature == null) return;
+      const likeMoment = feature.likeMoment;
+      if (likeMoment.includes(momentId)) {
+        res.send({ message: "Liked" });
+        return;
+      }
+      res.send({ message: "Unliked" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving Moment with id=" + uid,
+      });
+    });
+};
+exports.getMomentFollowLikeList = (req, res) => {
+  const uid = req.body.uid;
+  const momentId = req.body.momentId;
+  Users.findByPk(uid)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: "Not found Moment with id " + uid,
+        });
+      } else {
+        return data.follow;
+      }
+    })
+    .then((follow) => {
+      if (follow == null) return;
+      const followList = follow.followList;
+      Users.findAll({
+        where: { uid: { [Op.in]: followList } },
+        attributes: ["uid", "userName", "photo", "feature"],
+      })
+        .then((data) => {
+          const likeList = [];
+          data.forEach((user) => {
+            if (user.feature.likeMoment.includes(momentId)) {
+              likeList.push(user);
+            }
+          });
+          res.send(likeList);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).send({
+            message: "Error retrieving User with id=" + uid,
+          });
+        });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving Moment with id=" + uid,
+      });
+    });
+};
+exports.globalSearch = (req, res) => {
+  const keyword = req.body.keyword;
+  const uid = req.body.uid;
+  const result = {
+    users: [],
+    courses: [],
+    poses: [],
+    moments: [],
+    fits: [],
+  };
+  Users.findAll({
+    where: { userName: { [Op.like]: `%${keyword}%` } },
+    attributes: ["uid", "userName", "photo"],
+  })
+    .then((data) => {
+      result.users = data;
+      return Courses.findAll({
+        where: { name: { [Op.like]: `%${keyword}%` } },
+        attributes: ["id", "name", "photo"],
+      });
+    })
+    .then((data) => {
+      result.courses = data;
+      return Poses.findAll({
+        where: { name: { [Op.like]: `%${keyword}%` } },
+        attributes: ["id", "name", "photo"],
+      });
+    })
+    .then((data) => {
+      result.poses = data;
+      return Moments.findAll({
+        where: { content: { [Op.like]: `%${keyword}%` } },
+        attributes: ["id", "content", "photo", "author"],
+      });
+    })
+    .then((data) => {
+      result.moments = data;
+      return Fits.findAll({
+        where: { content: { [Op.like]: `%${keyword}%` } },
+        attributes: ["id", "content", "courseId"],
+      });
+    })
+    .then((data) => {
+      result.fits = data;
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving keyword=" + keyword,
       });
     });
 };

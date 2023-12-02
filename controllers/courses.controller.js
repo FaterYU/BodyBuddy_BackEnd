@@ -102,6 +102,7 @@ exports.createCourse = (req, res) => {
     content: req.body.content,
     duration: req.body.duration,
     infomation: req.body.infomation,
+    like: 0,
   };
   Courses.create(course)
     .then((data) => {

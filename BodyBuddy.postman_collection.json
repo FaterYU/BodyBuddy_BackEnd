@@ -179,6 +179,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"google@gmail.com\",\r\n    \"password\": \"lihua123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -453,6 +483,152 @@
 								"api",
 								"courses",
 								"getCourseNameById"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "moments",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:12647/api/moments/findAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"moments",
+								"findAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findOne",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/moments/findOne",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"moments",
+								"findOne"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"author\": 1,\r\n    \"photo\": \"moment_1.jpg\",\r\n    \"content\": {\r\n        \"title\": \"Today is a good day!\",\r\n        \"text\": \"Tomorrow is another day!\",\r\n        \"type\": \"photo\",\r\n        \"photo\": [\"moment_1.jpg\", \"moment_2.jpg\"],\r\n        \"video\": [],\r\n        \"mention\": [1]\r\n    },\r\n    \"tags\": {\r\n        \"tagsList\": [\"daily\",\"push-up\"]\r\n    },\r\n    \"like\": 2,\r\n    \"comment\": {\r\n        \"commentList\": [\r\n            {\r\n                \"author\": 1,\r\n                \"content\": \"Good moment!\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/moments/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"moments",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"like\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/moments/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"moments",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/moments/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"moments",
+								"delete"
 							]
 						}
 					},
