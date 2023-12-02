@@ -1,9 +1,22 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
+const controller = require("../controllers/file.controller");
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+// /* GET home page. */
+// router.get('/', function(req, res, next) {
+//   res.render('index', { title: 'Express' });
+// });
 
-module.exports = router;
+var routes = (app) => {
+  router.get("/", home);
+  router.post("/api/upload", controller.upload);
+  router.get("/api/fileslist", controller.getListFiles);
+  router.post("/api/files", controller.download);
+  app.use(router);
+};
+
+function home(req, res) {
+  res.render("index", { title: "Express" });
+}
+
+module.exports = routes;
