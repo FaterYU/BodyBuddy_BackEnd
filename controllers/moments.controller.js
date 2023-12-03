@@ -142,12 +142,12 @@ exports.getMomentByAuthor = (req, res) => {
     });
 };
 exports.getFollowMoment = (req, res) => {
-  const userId = req.body.userId;
-  Users.findByPk(userId)
+  const uid = req.body.uid;
+  Users.findByPk(uid)
     .then((data) => {
       if (data) {
-        const followList = data.followList;
-        Moments.findAll({ where: { author: followList } })
+        const follow = data.follow.followList;
+        Moments.findAll({ where: { author: { [Op.in]: follow } } })
           .then((data) => {
             if (data) {
               res.send(data);
@@ -165,14 +165,14 @@ exports.getFollowMoment = (req, res) => {
           });
       } else {
         res.status(404).send({
-          message: `Cannot find User with id=${userId}.`,
+          message: `Cannot find User with uid=${uid}.`,
         });
       }
     })
     .catch((err) => {
       console.log(err);
       res.status(500).send({
-        message: `Error retrieving User with id=${userId}`,
+        message: `Error retrieving User with uid=${uid}`,
       });
     });
 };

@@ -162,27 +162,21 @@ exports.login = (req, res) => {
     })
     .then((uid) => {
       if (uid == null) return;
-      Users.update({ LastLogin: new Date() }, { where: { uid: uid } });
-      return uid;
+      return {
+        promise: Users.update(
+          { lastLogin: new Date() },
+          { where: { uid: uid } }
+        ),
+        uid: uid,
+      };
     })
-    .then((uid) => {
-      if (uid == null) return;
-      Users.findByPk(uid)
-        .then((data) => {
-          if (!data) {
-            res.status(404).send({
-              message: "Not found User with id " + uid,
-            });
-          } else {
-            res.send(data);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          res.status(500).send({
-            message: "Error retrieving User with id=" + uid,
-          });
-        });
+    .then((data) => {
+      if (data.promise == null) return;
+      return Users.findByPk(data.uid);
+    })
+    .then((data) => {
+      if (data == null) return;
+      res.send(data);
     })
     .catch((err) => {
       console.log(err);
@@ -191,6 +185,7 @@ exports.login = (req, res) => {
       });
     });
 };
+
 exports.follow = (req, res) => {
   const uid = req.body.uid;
   Users.findByPk(uid)
@@ -298,7 +293,7 @@ exports.getFollowList = (req, res) => {
 exports.getFollowedList = (req, res) => {
   const uid = req.body.uid;
   Users.findAll({
-    where: { follow: { [Op.like]: `%${uid}%` } },
+    where: { follow: db.Sequelize.literal(`follow like '%${uid}%'`) },
     attributes: ["uid", "userName", "photo"],
   })
     .then((data) => {
@@ -332,6 +327,8 @@ exports.likeCourse = (req, res) => {
         return;
       }
       likeCourse.push(courseId);
+      const newFeature = feature;
+      newFeature.likeCourse = likeCourse;
       Courses.findByPk(courseId)
         .then((data) => {
           if (!data) {
@@ -347,10 +344,7 @@ exports.likeCourse = (req, res) => {
           like += 1;
           Courses.update({ like: like }, { where: { id: courseId } });
         });
-      Users.update(
-        { feature: { likeCourse: likeCourse } },
-        { where: { uid: uid } }
-      );
+      Users.update({ feature: newFeature }, { where: { uid: uid } });
       res.send({ message: "Liked" });
     })
     .catch((err) => {
@@ -375,12 +369,14 @@ exports.unlikeCourse = (req, res) => {
     .then((feature) => {
       if (feature == null) return;
       const likeCourse = feature.likeCourse;
-      const courseId = req.body.courseId;
+      const newFeature = feature;
       if (!likeCourse.includes(courseId)) {
         res.send({ message: "Already unliked" });
         return;
       }
       likeCourse.splice(likeCourse.indexOf(courseId), 1);
+      newFeature.likeCourse = likeCourse;
+      const courseId = req.body.courseId;
       Courses.findByPk(courseId)
         .then((data) => {
           if (!data) {
@@ -396,10 +392,7 @@ exports.unlikeCourse = (req, res) => {
           like -= 1;
           Courses.update({ like: like }, { where: { id: courseId } });
         });
-      Users.update(
-        { feature: { likeCourse: likeCourse } },
-        { where: { uid: uid } }
-      );
+      Users.update({ feature: newFeature }, { where: { uid: uid } });
       res.send({ message: "Unliked" });
     })
     .catch((err) => {
@@ -459,6 +452,8 @@ exports.likePose = (req, res) => {
         return;
       }
       likePose.push(poseId);
+      const newFeature = feature;
+      newFeature.likePose = likePose;
       Poses.findByPk(poseId)
         .then((data) => {
           if (!data) {
@@ -474,10 +469,7 @@ exports.likePose = (req, res) => {
           like += 1;
           Poses.update({ like: like }, { where: { id: poseId } });
         });
-      Users.update(
-        { feature: { likePose: likePose } },
-        { where: { uid: uid } }
-      );
+      Users.update({ feature: newFeature }, { where: { uid: uid } });
       res.send({ message: "Liked" });
     })
     .catch((err) => {
@@ -508,6 +500,8 @@ exports.unlikePose = (req, res) => {
         return;
       }
       likePose.splice(likePose.indexOf(poseId), 1);
+      const newFeature = feature;
+      newFeature.likePose = likePose;
       Poses.findByPk(poseId)
         .then((data) => {
           if (!data) {
@@ -523,10 +517,7 @@ exports.unlikePose = (req, res) => {
           like -= 1;
           Poses.update({ like: like }, { where: { id: poseId } });
         });
-      Users.update(
-        { feature: { likePose: likePose } },
-        { where: { uid: uid } }
-      );
+      Users.update({ feature: newFeature }, { where: { uid: uid } });
       res.send({ message: "Unliked" });
     })
     .catch((err) => {
@@ -586,6 +577,8 @@ exports.likeMoment = (req, res) => {
         return;
       }
       likeMoment.push(momentId);
+      const newFeature = feature;
+      newFeature.likeMoment = likeMoment;
       Moments.findByPk(momentId)
         .then((data) => {
           if (!data) {
@@ -601,10 +594,7 @@ exports.likeMoment = (req, res) => {
           like += 1;
           Moments.update({ like: like }, { where: { id: momentId } });
         });
-      Users.update(
-        { feature: { likeMoment: likeMoment } },
-        { where: { uid: uid } }
-      );
+      Users.update({ feature: newFeature }, { where: { uid: uid } });
       res.send({ message: "Liked" });
     })
     .catch((err) => {
@@ -635,6 +625,8 @@ exports.unlikeMoment = (req, res) => {
         return;
       }
       likeMoment.splice(likeMoment.indexOf(momentId), 1);
+      const newFeature = feature;
+      newFeature.likeMoment = likeMoment;
       Moments.findByPk(momentId)
         .then((data) => {
           if (!data) {
@@ -650,10 +642,7 @@ exports.unlikeMoment = (req, res) => {
           like -= 1;
           Moments.update({ like: like }, { where: { id: momentId } });
         });
-      Users.update(
-        { feature: { likeMoment: likeMoment } },
-        { where: { uid: uid } }
-      );
+      Users.update({ feature: newFeature }, { where: { uid: uid } });
       res.send({ message: "Unliked" });
     })
     .catch((err) => {
@@ -772,13 +761,6 @@ exports.globalSearch = (req, res) => {
     })
     .then((data) => {
       result.moments = data;
-      return Fits.findAll({
-        where: { content: { [Op.like]: `%${keyword}%` } },
-        attributes: ["id", "content", "courseId"],
-      });
-    })
-    .then((data) => {
-      result.fits = data;
       res.send(result);
     })
     .catch((err) => {
