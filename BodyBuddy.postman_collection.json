@@ -97,7 +97,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"uid\": 2\r\n}",
+							"raw": "{\r\n    \"uid\": 3\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -127,7 +127,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"uid\": 3,\r\n    \"userName\": \"ZhangSan\"\r\n}",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"feature\": {\r\n            \"likePose\": [],\r\n            \"likeCourse\": [],\r\n            \"likeMoment\": []\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -205,6 +205,456 @@
 								"api",
 								"users",
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "follow",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"followId\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/follow",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"follow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unfollow",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"followId\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/unfollow",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"unfollow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFollowList",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/getFollowList",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"getFollowList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFollowedList",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/getFollowedList",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"getFollowedList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "likeCourse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"courseId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/likeCourse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"likeCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unlikeCourse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"courseId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/unlikeCourse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"unlikeCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkLikeCourse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"courseId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/checkLikeCourse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"checkLikeCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "likePose",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"poseId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/likePose",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"likePose"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unlikePose",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"poseId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/unlikePose",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"unlikePose"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkLikePose",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"courseId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/checkLikePose",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"checkLikePose"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "likeMoment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"momentId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/likeMoment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"likeMoment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unlikeMoment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"momentId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/unlikeMoment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"unlikeMoment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkLikeMoment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"momentId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/checkLikeMoment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"checkLikeMoment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMomentFollowLikeList",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"momentId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/getMomentFollowLikeList",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"getMomentFollowLikeList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "globalSearch",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"keyword\": \"Push\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/users/globalSearch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"globalSearch"
 							]
 						}
 					},
@@ -629,6 +1079,66 @@
 								"api",
 								"moments",
 								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMomentByAuthor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"author\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/moments/getMomentByAuthor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"moments",
+								"getMomentByAuthor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFollowMoment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/moments/getFollowMoment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"moments",
+								"getFollowMoment"
 							]
 						}
 					},
