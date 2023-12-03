@@ -70,3 +70,14 @@ yarn start
 ## 接口示例
 
 安装 [postman](https://www.postman.com/downloads/)，导入 [BodyBuddy.postman_collection.json](./BodyBuddy.postman_collection.json) 文件，即可查看接口示例
+
+## 云服务
+
+- 后端域名：http://bodybuddy.fater.top
+
+postman 中的接口示例使用的是本地部署的后端服务，如果需要使用云服务，按以下示例修改接口地址
+
+```diff
+- http://localhost:12647/api/users/findAll
++ http://bodybuddy.fater.top/api/users/findAll
+```
