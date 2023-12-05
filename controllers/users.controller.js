@@ -25,7 +25,7 @@ exports.create = (req, res) => {
     role: "user",
     courses: { courseList: [] },
     follow: { followList: [] },
-    calendar: { calendarList: [] },
+    calendar: { calendarList: [], calendarActivityCount: 1 },
     infomation: req.body.infomation,
     level: "1",
     feature: { likeCourse: [], likePose: [], likeMoment: [] },
@@ -767,6 +767,223 @@ exports.globalSearch = (req, res) => {
       console.log(err);
       res.status(500).send({
         message: "Error retrieving keyword=" + keyword,
+      });
+    });
+};
+exports.getCalendarActivity = async (req, res) => {
+  try {
+    const uid = req.body.uid;
+    const user = await Users.findByPk(uid);
+
+    if (user == null) {
+      res.status(404).send({
+        message: "Not found User with id " + uid,
+      });
+      return;
+    }
+
+    const calendarList = user.calendar.calendarList;
+    const result = [];
+
+    await Promise.all(
+      calendarList.map(async (item) => {
+        const date = new Date(item.date);
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+
+        const activityDate = {
+          year: year,
+          month: month,
+          day: day,
+        };
+
+        const resultSublist = item.activityList;
+        const activityList = [];
+
+        await Promise.all(
+          resultSublist.map(async (subitem) => {
+            const activityId = subitem.activityId;
+            const activityStartTime = subitem.activityStartTime;
+            const activityEndTime = subitem.activityEndTime;
+            const activityContent = subitem.activityContent;
+            const activityCourseId = subitem.activityCourseId;
+
+            try {
+              const courseData = await Courses.findByPk(activityCourseId);
+
+              if (courseData == null) {
+                res.status(404).send({
+                  message: "Not found Course with id " + activityCourseId,
+                });
+                return;
+              }
+
+              const Course = {
+                id: courseData.id,
+                name: courseData.name,
+                photo: courseData.photo,
+              };
+
+              activityList.push({
+                activityId: activityId,
+                activityDate: activityDate,
+                activityStartTime: activityStartTime,
+                activityEndTime: activityEndTime,
+                activityContent: activityContent,
+                activityCourse: Course,
+              });
+            } catch (err) {
+              console.log(err);
+              res.status(500).send({
+                message: "Error retrieving Course with id=" + activityCourseId,
+              });
+            }
+          })
+        );
+
+        activityList.sort((a, b) => {
+          if (a.activityStartTime.hour < b.activityStartTime.hour) {
+            return -1;
+          } else if (a.activityStartTime.hour > b.activityStartTime.hour) {
+            return 1;
+          } else {
+            if (a.activityStartTime.minute < b.activityStartTime.minute) {
+              return -1;
+            } else if (
+              a.activityStartTime.minute > b.activityStartTime.minute
+            ) {
+              return 1;
+            } else {
+              return 0;
+            }
+          }
+        });
+
+        result.push({
+          activityDate: activityDate,
+          activityList: activityList,
+        });
+      })
+    );
+
+    res.send(result);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({
+      message: "Error retrieving User with id=" + uid,
+    });
+  }
+};
+
+exports.addCalendarActivity = (req, res) => {
+  const uid = req.body.uid;
+  const activityDate = req.body.activityDate;
+  const activityStartTime = req.body.activityStartTime;
+  const activityEndTime = req.body.activityEndTime;
+  const activityContent = req.body.activityContent;
+  const activityCourseId = req.body.activityCourseId;
+  const calendarActivity = {
+    activityId: undefined,
+    activityDate: activityDate,
+    activityStartTime: {
+      hour: activityStartTime.hour,
+      minute: activityStartTime.minute,
+    },
+    activityEndTime: {
+      hour: activityEndTime.hour,
+      minute: activityEndTime.minute,
+    },
+    activityContent: activityContent,
+    activityCourseId: activityCourseId,
+  };
+  Users.findByPk(uid)
+    .then((data) => {
+      if (data == null) {
+        res.status(404).send({
+          message: "Not found User with id " + uid,
+        });
+        return;
+      }
+      const calendarList = data.calendar.calendarList;
+      const calendarActivityCount = data.calendar.calendarActivityCount;
+      calendarActivity.activityId = calendarActivityCount;
+      const calendarDate = new Date(
+        activityDate.year,
+        activityDate.month - 1,
+        activityDate.day
+      );
+      var flag = false;
+      calendarList.forEach((item) => {
+        const date = new Date(item.date);
+        if (date.getTime() == calendarDate.getTime()) {
+          item.activityList.push(calendarActivity);
+          flag = true;
+        }
+      });
+      if (!flag) {
+        calendarList.push({
+          date: calendarDate,
+          activityList: [calendarActivity],
+        });
+      }
+      Users.update(
+        {
+          calendar: {
+            calendarList: calendarList,
+            calendarActivityCount: calendarActivityCount + 1,
+          },
+        },
+        { where: { uid: uid } }
+      );
+      res.send({ message: "Added" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving User with id=" + uid,
+      });
+    });
+};
+exports.deleteCalendarActivity = (req, res) => {
+  const uid = req.body.uid;
+  const activityId = req.body.activityId;
+  Users.findByPk(uid)
+    .then((data) => {
+      if (data == null) {
+        res.status(404).send({
+          message: "Not found User with id " + uid,
+        });
+        return;
+      }
+      const calendarList = data.calendar.calendarList;
+      const calendarActivityCount = data.calendar.calendarActivityCount;
+      calendarList.forEach((item) => {
+        const activityList = item.activityList;
+        activityList.forEach((subitem) => {
+          if (subitem.activityId == activityId) {
+            activityList.splice(activityList.indexOf(subitem), 1);
+          }
+        });
+        if (activityList.length == 0) {
+          calendarList.splice(calendarList.indexOf(item), 1);
+        }
+      });
+      Users.update(
+        {
+          calendar: {
+            calendarList: calendarList,
+            calendarActivityCount: calendarActivityCount,
+          },
+        },
+        { where: { uid: uid } }
+      );
+      res.send({ message: "Deleted" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving User with id=" + uid,
       });
     });
 };

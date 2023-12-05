@@ -12,7 +12,7 @@
 				{
 					"name": "findAll",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"url": {
 							"raw": "http://localhost:12647/api/users/findAll",
@@ -67,7 +67,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"uid\": 3\r\n}",
+							"raw": "{\r\n    \"uid\": 4\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -127,7 +127,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"uid\": 4,\r\n    \"feature\": {\r\n            \"likePose\": [],\r\n            \"likeCourse\": [],\r\n            \"likeMoment\": []\r\n    }\r\n}",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"calendar\": {\r\n        \"calendarList\": [],\r\n        \"calendarCount\": 1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -655,6 +655,93 @@
 								"api",
 								"users",
 								"globalSearch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCalendarActivity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:12647/api/users/getCalendarActivity",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"getCalendarActivity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addCalendarActivity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"activityDate\": {\r\n        \"year\": 2023,\r\n        \"month\": 12,\r\n        \"day\": 6\r\n    },\r\n    \"activityStartTime\": {\r\n        \"hour\": 12,\r\n        \"minute\": 12\r\n    },\r\n    \"activityEndTime\": {\r\n        \"hour\": 22,\r\n        \"minute\": 12\r\n    },\r\n    \"activityContent\": \"I am activity\",\r\n    \"activityCourseId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:12647/api/users/addCalendarActivity",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"addCalendarActivity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCalendarActivity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"activityId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:12647/api/users/deleteCalendarActivity",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"users",
+								"deleteCalendarActivity"
 							]
 						}
 					},

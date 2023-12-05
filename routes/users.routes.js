@@ -23,6 +23,9 @@ module.exports = (app) => {
   router.post("/checkLikeMoment", users.checkLikeMoment);
   router.post("/getMomentFollowLikeList", users.getMomentFollowLikeList);
   router.post("/globalSearch", users.globalSearch);
+  router.post("/getCalendarActivity", users.getCalendarActivity);
+  router.post("/addCalendarActivity", users.addCalendarActivity);
+  router.post("/deleteCalendarActivity", users.deleteCalendarActivity);
 
   app.use("/api/users", router);
 };
