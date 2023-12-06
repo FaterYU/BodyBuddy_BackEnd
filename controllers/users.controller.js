@@ -771,8 +771,8 @@ exports.globalSearch = (req, res) => {
     });
 };
 exports.getCalendarActivity = async (req, res) => {
+  const uid = req.body.uid;
   try {
-    const uid = req.body.uid;
     const user = await Users.findByPk(uid);
 
     if (user == null) {
@@ -838,10 +838,10 @@ exports.getCalendarActivity = async (req, res) => {
               res.status(500).send({
                 message: "Error retrieving Course with id=" + activityCourseId,
               });
+              return;
             }
           })
         );
-
         activityList.sort((a, b) => {
           if (a.activityStartTime.hour < b.activityStartTime.hour) {
             return -1;
@@ -866,13 +866,9 @@ exports.getCalendarActivity = async (req, res) => {
         });
       })
     );
-
     res.send(result);
   } catch (err) {
     console.log(err);
-    res.status(500).send({
-      message: "Error retrieving User with id=" + uid,
-    });
   }
 };
 
@@ -927,6 +923,15 @@ exports.addCalendarActivity = (req, res) => {
           activityList: [calendarActivity],
         });
       }
+      calendarList.sort((a, b) => {
+        if (a.date.getTime() < b.date.getTime()) {
+          return -1;
+        } else if (a.date.getTime() > b.date.getTime()) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
       Users.update(
         {
           calendar: {
