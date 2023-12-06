@@ -808,8 +808,8 @@ exports.getCalendarActivity = async (req, res) => {
             const activityEndTime = subitem.activityEndTime;
             const activityContent = subitem.activityContent;
             const activityCourseId = subitem.activityCourseId;
-
-            try {
+            var Course = null;
+            if (activityCourseId != null) {
               const courseData = await Courses.findByPk(activityCourseId);
 
               if (courseData == null) {
@@ -818,28 +818,23 @@ exports.getCalendarActivity = async (req, res) => {
                 });
                 return;
               }
-
-              const Course = {
+              Course = {
                 id: courseData.id,
                 name: courseData.name,
                 photo: courseData.photo,
               };
-
-              activityList.push({
-                activityId: activityId,
-                activityDate: activityDate,
-                activityStartTime: activityStartTime,
-                activityEndTime: activityEndTime,
-                activityContent: activityContent,
-                activityCourse: Course,
-              });
-            } catch (err) {
-              console.log(err);
-              res.status(500).send({
-                message: "Error retrieving Course with id=" + activityCourseId,
-              });
-              return;
+            } else {
+              Course = null;
             }
+
+            activityList.push({
+              activityId: activityId,
+              activityDate: activityDate,
+              activityStartTime: activityStartTime,
+              activityEndTime: activityEndTime,
+              activityContent: activityContent,
+              activityCourse: Course,
+            });
           })
         );
         activityList.sort((a, b) => {
@@ -878,7 +873,9 @@ exports.addCalendarActivity = (req, res) => {
   const activityStartTime = req.body.activityStartTime;
   const activityEndTime = req.body.activityEndTime;
   const activityContent = req.body.activityContent;
-  const activityCourseId = req.body.activityCourseId;
+  const activityCourseId = req.body.activityCourseId
+    ? req.body.activityCourseId
+    : null;
   const calendarActivity = {
     activityId: undefined,
     activityDate: activityDate,
