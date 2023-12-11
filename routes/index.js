@@ -8,11 +8,11 @@ const controller = require("../controllers/file.controller");
 // });
 
 var routes = (app) => {
-  router.get("/", home);
-  router.post("/api/upload", controller.upload);
-  router.get("/api/fileslist", controller.getListFiles);
-  router.post("/api/files", controller.download);
-  app.use(router);
+  // router.get("/", home);
+  router.post("/upload", controller.upload);
+  // router.get("/api/fileslist", controller.getListFiles);
+  router.post("/download", controller.download);
+  app.use("/api/files", router);
 };
 
 function home(req, res) {

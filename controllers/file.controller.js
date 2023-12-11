@@ -18,7 +18,7 @@ const upload = async (req, res) => {
     // console.log(req.body)
     await uploadFile(req, res);
     // console.log(req.body)
-    unitPath = [req.body.uploader, req.body.type];
+    // unitPath = [req.body.uploader, req.body.type];
     // console.log(unitPath)
     mkdirPath(__basedir + "/uploads/");
     // const srcPath = __basedir + "\\uploads\\originfiles\\";
