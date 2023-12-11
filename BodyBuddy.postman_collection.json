@@ -1438,6 +1438,73 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "files",
+			"item": [
+				{
+					"name": "upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"description": "字段为file，选择文件",
+									"type": "file",
+									"src": "/E:/workspace/Project/BodyBuddy_BackEnd/BodyBuddy.postman_collection.json"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/files/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"files",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "download",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"1702318893347BodyBuddy.postman_collection.json\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/files/download",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"files",
+								"download"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
