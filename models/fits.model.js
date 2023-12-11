@@ -11,11 +11,8 @@ module.exports = (sequelize, Sequelize) => {
     courseId: {
       type: Sequelize.INTEGER,
     },
-    poseId: {
-      type: Sequelize.INTEGER,
-    },
     userVideo: {
-      type: Sequelize.STRING,
+      type: Sequelize.JSON,
     },
     score: {
       type: Sequelize.JSON,

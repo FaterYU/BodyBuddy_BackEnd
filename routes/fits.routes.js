@@ -1,9 +1,12 @@
 module.exports = (app) => {
   const fits = require("../controllers/fits.controller.js");
   var router = require("express").Router();
-  //   // Create a new Fit
-  //   router.post("/", fits.create);
-  // Retrieve all Fits
-  router.get("/", fits.findAll);
+  router.get("/findAll", fits.findAll);
+  router.post("/create", fits.create);
+  router.post("/getOneFitById", fits.getOneFitById);
+  router.post("/findListByUserId", fits.findListByUserId);
+  router.delete("/deleteByFitsId", fits.deleteByFitsId);
+  router.put("/setVideoByPoseIdx", fits.setVideoByPoseIdx);
+  router.post("/getOneFitScoreById", fits.getOneFitScoreById);
   app.use("/api/fits", router);
 };

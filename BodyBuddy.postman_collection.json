@@ -127,7 +127,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"uid\": 4,\r\n    \"calendar\": {\r\n        \"calendarList\": [],\r\n        \"calendarCount\": 1\r\n    }\r\n}",
+							"raw": "{\r\n    \"uid\": 1,\r\n    \"calendar\": {\r\n        \"calendarList\": [],\r\n        \"calendarActivityCount\": 1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -696,7 +696,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"uid\": 4,\r\n    \"activityDate\": {\r\n        \"year\": 2023,\r\n        \"month\": 12,\r\n        \"day\": 6\r\n    },\r\n    \"activityStartTime\": {\r\n        \"hour\": 12,\r\n        \"minute\": 12\r\n    },\r\n    \"activityEndTime\": {\r\n        \"hour\": 22,\r\n        \"minute\": 12\r\n    },\r\n    \"activityContent\": \"I am activity\",\r\n    \"activityCourseId\": 1\r\n}",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"activityDate\": {\r\n        \"year\": 2023,\r\n        \"month\": 12,\r\n        \"day\": 6\r\n    },\r\n    \"activityStartTime\": {\r\n        \"hour\": 12,\r\n        \"minute\": 12\r\n    },\r\n    \"activityEndTime\": {\r\n        \"hour\": 22,\r\n        \"minute\": 12\r\n    },\r\n    \"activityContent\": \"I am activity\",\r\n    \"activityCourseId\": null\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -725,7 +725,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"uid\": 4,\r\n    \"activityId\": 2\r\n}",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"activityId\": 6\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1088,7 +1088,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"author\": 1,\r\n    \"photo\": \"moment_1.jpg\",\r\n    \"content\": {\r\n        \"title\": \"Today is a good day!\",\r\n        \"text\": \"Tomorrow is another day!\",\r\n        \"type\": \"photo\",\r\n        \"photo\": [\"moment_1.jpg\", \"moment_2.jpg\"],\r\n        \"video\": [],\r\n        \"mention\": [1]\r\n    },\r\n    \"tags\": {\r\n        \"tagsList\": [\"daily\",\"push-up\"]\r\n    },\r\n    \"like\": 2,\r\n    \"comment\": {\r\n        \"commentList\": [\r\n            {\r\n                \"author\": 1,\r\n                \"content\": \"Good moment!\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"raw": "{\r\n    \"author\": 5,\r\n    \"photo\": \"moment_2.jpg\",\r\n    \"content\": {\r\n        \"title\": \"Today is a good day!\",\r\n        \"text\": \"Tomorrow is another day!\",\r\n        \"type\": \"photo\",\r\n        \"photo\": [\"moment_1.jpg\", \"moment_2.jpg\"],\r\n        \"video\": [],\r\n        \"mention\": [1]\r\n    },\r\n    \"tags\": {\r\n        \"tagsList\": [\"daily\",\"push-up\"]\r\n    },\r\n    \"like\": 2,\r\n    \"comment\": {\r\n        \"commentList\": [\r\n            {\r\n                \"author\": 1,\r\n                \"content\": \"Good moment!\"\r\n            }\r\n        ]\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1226,6 +1226,212 @@
 								"api",
 								"moments",
 								"getFollowMoment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "fits",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:12647/api/fits/findAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"fits",
+								"findAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": 4,\r\n    \"courseId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/fits/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"fits",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneFitById",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/fits/getOneFitById",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"fits",
+								"getOneFitById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findListByUserId",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/fits/findListByUserId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"fits",
+								"findListByUserId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteByFitsId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/fits/deleteByFitsId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"fits",
+								"deleteByFitsId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setVideoByPoseIdx",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"poseIdx\": 0,\r\n    \"video\": \"capture0001.mp4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/fits/setVideoByPoseIdx",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"fits",
+								"setVideoByPoseIdx"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneFitScoreById",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/fits/getOneFitScoreById",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"fits",
+								"getOneFitScoreById"
 							]
 						}
 					},
