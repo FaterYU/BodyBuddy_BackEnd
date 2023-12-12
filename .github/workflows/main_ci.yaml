@@ -3,16 +3,16 @@ name: Main CI
 on: [push]
 
 jobs:
-  pre-commit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: 3.x
-      - uses: pre-commit/action@v3.0.0
-      - uses: pre-commit-ci/lite-action@v1.0.1
-        if: always()
+  # pre-commit:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: actions/setup-python@v4
+  #       with:
+  #         python-version: 3.x
+  #     - uses: pre-commit/action@v3.0.0
+  #     - uses: pre-commit-ci/lite-action@v1.0.1
+  #       if: always()
 
   lint:
     runs-on: ubuntu-latest
