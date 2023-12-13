@@ -756,6 +756,37 @@ exports.globalSearch = (req, res) => {
           calorie: course.infomation.calorie,
         });
       });
+      return courseList;
+    })
+    .then(async (courseList) => {
+      await Promise.all(
+        courseList.map(async (course) => {
+          await Fits.count({
+            where: {
+              courseId: course.id,
+            },
+          }).then((num) => {
+            course.practiced = num;
+          });
+        })
+      );
+      return courseList;
+    })
+    .then(async (courseList) => {
+      if (uid) {
+        await Promise.all(
+          courseList.map(async (course) => {
+            await Fits.count({
+              where: {
+                userId: uid,
+                courseId: course.id,
+              },
+            }).then((num) => {
+              course.userPracticed = num;
+            });
+          })
+        );
+      }
       result.courses = courseList;
       return Poses.findAll({
         where: { name: { [Op.like]: `%${keyword}%` } },
