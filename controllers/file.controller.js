@@ -38,12 +38,12 @@ const upload = async (req, res) => {
       message: req.file.originalname,
     });
     // compress and save file to /uploads with rename
-    compressorImage(req.file, "file", 0.5).then((result) => {
-      fs.writeFileSync(
-        __basedir + "/uploads/" + "compress" + req.file.originalname,
-        result
-      );
-    });
+    // compressorImage(req.file, "file", 0.5).then((result) => {
+    //   fs.writeFileSync(
+    //     __basedir + "/uploads/" + "compress" + req.file.originalname,
+    //     result
+    //   );
+    // });
   } catch (err) {
     // console.log(err);
     res.status(500).send({
