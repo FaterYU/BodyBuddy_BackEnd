@@ -742,11 +742,21 @@ exports.globalSearch = (req, res) => {
       result.users = data;
       return Courses.findAll({
         where: { name: { [Op.like]: `%${keyword}%` } },
-        attributes: ["id", "name", "photo"],
+        attributes: ["id", "name", "photo", "duration", "infomation"],
       });
     })
     .then((data) => {
-      result.courses = data;
+      const courseList = [];
+      data.forEach((course) => {
+        courseList.push({
+          id: course.id,
+          name: course.name,
+          photo: course.photo,
+          duration: course.duration / 60,
+          calorie: course.infomation.calorie,
+        });
+      });
+      result.courses = courseList;
       return Poses.findAll({
         where: { name: { [Op.like]: `%${keyword}%` } },
         attributes: ["id", "name", "photo"],

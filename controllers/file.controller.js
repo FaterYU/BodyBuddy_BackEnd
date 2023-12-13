@@ -1,5 +1,6 @@
 const uploadFile = require("../middleware/upload");
 const fs = require("fs");
+const { compressorImage } = require("../middleware/imageCompressor");
 
 function copyFile(src, dist) {
   fs.writeFileSync(dist, fs.readFileSync(src));
@@ -20,7 +21,7 @@ const upload = async (req, res) => {
     // console.log(req.body)
     // unitPath = [req.body.uploader, req.body.type];
     // console.log(unitPath)
-    mkdirPath(__basedir + "/uploads/");
+    // mkdirPath(__basedir + "/uploads/");
     // const srcPath = __basedir + "\\uploads\\originfiles\\";
     // var distPath = __basedir + "\\uploads\\clearfiles\\";
     // mkdirPath(srcPath);
@@ -35,6 +36,13 @@ const upload = async (req, res) => {
     }
     res.status(200).send({
       message: req.file.originalname,
+    });
+    // compress and save file to /uploads with rename
+    compressorImage(req.file, "file", 0.5).then((result) => {
+      fs.writeFileSync(
+        __basedir + "/uploads/" + "compress" + req.file.originalname,
+        result
+      );
     });
   } catch (err) {
     // console.log(err);

@@ -2,6 +2,7 @@ const db = require("../models");
 const Courses = db.courses;
 const Op = db.Sequelize.Op;
 const Poses = db.poses;
+const Fits = db.fits;
 
 exports.findAllPose = (req, res) => {
   Poses.findAll()
@@ -163,11 +164,53 @@ exports.deleteCourse = (req, res) => {
     });
 };
 exports.getCourseList = (req, res) => {
+  const userId = req.body.uid ? req.body.uid : null;
   Courses.findAll({
-    attributes: ["id", "name", "photo", "duration"],
+    attributes: ["id", "name", "photo", "duration", "infomation"],
   })
     .then((data) => {
-      res.send(data);
+      const courseList = [];
+      data.forEach((course) => {
+        courseList.push({
+          id: course.id,
+          name: course.name,
+          photo: course.photo,
+          duration: course.duration / 60,
+          calorie: course.infomation.calorie,
+        });
+      });
+      return courseList;
+    })
+    .then(async (courseList) => {
+      await Promise.all(
+        courseList.map(async (course) => {
+          await Fits.count({
+            where: {
+              courseId: course.id,
+            },
+          }).then((num) => {
+            course.practiced = num;
+          });
+        })
+      );
+      return courseList;
+    })
+    .then(async (courseList) => {
+      if (userId) {
+        await Promise.all(
+          courseList.map(async (course) => {
+            await Fits.count({
+              where: {
+                userId: userId,
+                courseId: course.id,
+              },
+            }).then((num) => {
+              course.userPracticed = num;
+            });
+          })
+        );
+      }
+      res.send(courseList);
     })
     .catch((err) => {
       console.log(err);

@@ -10,7 +10,7 @@ module.exports = (app) => {
   router.post("/createCourse", courses.createCourse);
   router.put("/updateCourse", courses.updateCourse);
   router.delete("/deleteCourse", courses.deleteCourse);
-  router.get("/getCourseList", courses.getCourseList);
+  router.post("/getCourseList", courses.getCourseList);
   router.post("/getCourseNameById", courses.getCourseNameById);
 
   app.use("/api/courses", router);
