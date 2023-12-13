@@ -977,8 +977,17 @@
 				{
 					"name": "getCourseList",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // uid 为可选，若不传则不会有用户已完成多少次的字段userPracticed\r\n    \"uid\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:12647/api/courses/getCourseList",
 							"protocol": "http",
@@ -1454,7 +1463,7 @@
 									"key": "file",
 									"description": "字段为file，选择文件",
 									"type": "file",
-									"src": "/E:/workspace/Project/BodyBuddy_BackEnd/BodyBuddy.postman_collection.json"
+									"src": "/C:/Users/10422/Desktop/Screenshot_1702366717.png"
 								}
 							]
 						},
