@@ -6,7 +6,7 @@ const Users = db.users;
 exports.findAll = (req, res) => {
   const title = req.query.title;
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
-  Moments.findAll({ where: condition })
+  Moments.findAll({ where: condition, order: [["updatedAt", "DESC"]] })
     .then((data) => {
       res.send(data);
     })
@@ -124,7 +124,7 @@ exports.delete = (req, res) => {
 };
 exports.getMomentByAuthor = (req, res) => {
   const author = req.body.author;
-  Moments.findAll({ where: { author: author } })
+  Moments.findAll({ where: { author: author }, order: [["updatedAt", "DESC"]] })
     .then((data) => {
       if (data) {
         res.send(data);
@@ -147,7 +147,10 @@ exports.getFollowMoment = (req, res) => {
     .then((data) => {
       if (data) {
         const follow = data.follow.followList;
-        Moments.findAll({ where: { author: { [Op.in]: follow } } })
+        Moments.findAll({
+          where: { author: { [Op.in]: follow } },
+          order: [["updatedAt", "DESC"]],
+        })
           .then((data) => {
             if (data) {
               res.send(data);
