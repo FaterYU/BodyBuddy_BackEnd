@@ -1,5 +1,4 @@
 import pymysql
-import pandas as pd
 import json
 import time
 
