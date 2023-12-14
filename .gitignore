@@ -28,3 +28,6 @@ out/
 *.exe
 *.msi
 *.dmg
+
+
+sh/data/pic_video/

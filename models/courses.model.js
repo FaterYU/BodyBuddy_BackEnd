@@ -38,9 +38,6 @@ module.exports = (sequelize, Sequelize) => {
     infomation: {
       type: Sequelize.JSON,
     },
-    like: {
-      type: Sequelize.INTEGER,
-    },
   });
   return Courses;
 };

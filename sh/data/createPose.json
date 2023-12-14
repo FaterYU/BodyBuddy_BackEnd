@@ -1,0 +1,241 @@
+[
+    {
+        "name": "Aerial pedaling",
+        "photo": "./pic_video/Aerial pedaling.jpg",
+        "content": {
+            "key point": "Lie on your back on a yoga mat with your arms pressed against the floor and your legs at a 30° Angle.",
+            "breath": "Keep breathing evenly throughout.",
+            "feeling": "Every time you push straight legs, you will have a strong feeling of tightness in the abdomen, but there should be no tightness or pain in the waist.",
+            "wrong": "Lower back off the floor, causing lower back pain."
+        },
+        "tags": {
+            "muscle": [
+                "Hypogastrium."
+            ]
+        },
+        "repetition": 16,
+        "like": 89,
+        "practiced": 7,
+        "video": "./pic_video/Aerial pedaling.mp4"
+    },
+    {
+        "name": "Crawl in place",
+        "photo": "./pic_video/Crawl in place.jpg",
+        "content": {
+            "key point": "Move your hands forward in turn, until your hands are directly below your head, and your torso is parallel to the ground. After a short stay, you can restore your body in the same way, and keep your back straight as far as possible throughout the movement.",
+            "breath": "Natural respiration.",
+            "feeling": "With the increase of the number of crawling, the shoulder has a sour swelling.",
+            "wrong": "Elbow overextension lock during crawling."
+        },
+        "tags": {
+            "muscle": [
+                "Anterior humeral bundle.",
+                "Midsection",
+                "Flank"
+            ]
+        },
+        "repetition": 16,
+        "like": 87,
+        "practiced": 12,
+        "video": "./pic_video/Crunch.mp4"
+    },
+    {
+        "name": "Crunch",
+        "photo": "./pic_video/Crunch.jpg",
+        "content": {
+            "key point": "Lie on your back on a yoga mat with your knees bent, legs shoulder-width apart and feet firmly planted.",
+            "breath": "Exhale as you roll, inhale as you fall.",
+            "feeling": "Relax your legs, and your upper abdomen will contract significantly when you roll up.",
+            "wrong": "Straining your head, causing neck pain."
+        },
+        "tags": {
+            "muscle": [
+                "Midsection."
+            ]
+        },
+        "repetition": 16,
+        "like": 70,
+        "practiced": 6,
+        "video": "./pic_video/Crunch.mp4"
+    },
+    {
+        "name": "Easy push-ups",
+        "photo": "./pic_video/Easy push-ups.jpg",
+        "content": {
+            "key point": "Push up on the mat, back straight, from the side to see the body into a straight line, hands on both sides of the chest, slightly wider than shoulder width.",
+            "breath": "Inhale with bent arms, exhale with extended arms.",
+            "feeling": "Soreness in the chest, front of the shoulders and back of the arms.",
+            "wrong": "Elbow joints lock up during arm extension, waist collapse or stiff hips during training."
+        },
+        "tags": {
+            "muscle": [
+                "Hypogastrium."
+            ]
+        },
+        "repetition": 16,
+        "like": 77,
+        "practiced": 5,
+        "video": "./pic_video/Easy push-ups.mp4"
+    },
+    {
+        "name": "Half squat move side to side",
+        "photo": "./pic_video/Half squat move side to side.jpg",
+        "content": {
+            "key point": "Back straight, legs slightly bent, knees and toes in the same direction, do not buckle, weight low, hands clasped, bent elbows placed in front of the chest",
+            "breath": "Natural breathing",
+            "feeling": "Sour swelling in the front of the thigh.",
+            "wrong": "Knees and toes are different directions."
+        },
+        "tags": {
+            "muscle": [
+                "The quadriceps.",
+                "Gluteus maximus."
+            ]
+        },
+        "repetition": 5,
+        "like": 99,
+        "practiced": 7,
+        "video": "./pic_video/Half squat move side to side.mp4"
+    },
+    {
+        "name": "High leg lift",
+        "photo": "./pic_video/High leg lift.jpg",
+        "content": {
+            "key point": "Keep your back straight, look ahead, and quickly alternate leg lifts on the balls of your feet.",
+            "breath": "Natural respiration.",
+            "feeling": "The faster the speed, the faster the heart rate, the faster the breathing.",
+            "wrong": "Center of gravity back."
+        },
+        "tags": {
+            "muscle": [
+                "Quadriceps musclesn."
+            ]
+        },
+        "repetition": 16,
+        "like": 66,
+        "practiced": 9,
+        "video": "./pic_video/High leg lift.mp4"
+    },
+    {
+        "name": "Jumping jack",
+        "photo": "./pic_video/Jumping jack.jpg",
+        "content": {
+            "key point": [
+                "Tighten your waist, tighten your arms",
+                "Lift the arm with shoulder strength, press the arm with back strength, and use the arm to drive the body to jump",
+                "Jump with your feet open and close, relax your calves as much as possible, and do not lower your head or look up"
+            ],
+            "breath": "Inhale as arms go up, exhale as arms go down",
+            "feeling": "Relax your ankles and knees and keep your abdomen tight. The whole has a certain elasticity",
+            "wrong": "Too slow, resulting in loose waist and abdomen."
+        },
+        "tags": {
+            "muscle": [
+                "The whole body."
+            ]
+        },
+        "repetition": 10,
+        "like": 111,
+        "practiced": 10,
+        "video": "./pic_video/Jumping jack.mp4"
+    },
+    {
+        "name": "Plank",
+        "photo": "./pic_video/Plank.jpg",
+        "content": {
+            "key point": "Bend the elbow, the forearm and the ball of the foot support the ground, ears, shoulders, hips, knees, ankles in a straight line.",
+            "breath": "Natural respiration.",
+            "feeling": "There should be tightness in the shoulders, back, hips, and the entire abdomen, with the abdomen being the strongest.",
+            "wrong": "Abdominal muscle exhaustion continues to persist, resulting in pain in the lower back."
+        },
+        "tags": {
+            "muscle": [
+                "Midsection.",
+                "Hypogastrium."
+            ]
+        },
+        "repetition": 14,
+        "like": 131,
+        "practiced": 8,
+        "video": "./pic_video/Plank.mp4"
+    },
+    {
+        "name": "Push-up",
+        "photo": "./pic_video/push_up.jpg",
+        "content": {
+            "key point": "Push-ups on a mat, back straight, body in a straight line when viewed from the side, hands propped up on either side of the chest, slightly wider than shoulder width apart. Bend your arms until your elbows are slightly higher than your torso, and then extend your arms up and back down.",
+            "breath": "Bend the arm and inhale, extend the arm and exhale.",
+            "feeling": "Soreness in the chest, anterior shoulder and posterior aspect of the great arm.",
+            "wrong": "Hyperextension and locking of the elbow joint during arm extension. Collapsing or puckering of the hips during training."
+        },
+        "tags": {
+            "muscle": [
+                "triceps muscle of arm",
+                "Medial and inferior fasciculus pectoralis"
+            ]
+        },
+        "repetition": 12,
+        "like": 581,
+        "practiced": 7,
+        "video": "./pic_video/push_up.mp4"
+    },
+    {
+        "name": "Russian twist",
+        "photo": "./pic_video/Russian twist.jpg",
+        "content": {
+            "key point": "Sit on a mat with your legs bent and knees up, feet off the floor, lower back straight and upper back slightly arched.",
+            "breath": "Exhale as you turn, inhale as you turn.",
+            "feeling": "There is constant tension throughout the abdomen. When turning, the opposite side of the abdomen appears contractive compression",
+            "wrong": "The abdominal muscles continue to persevere after exhaustion, causing the waist to begin to borrow."
+        },
+        "tags": {
+            "muscle": [
+                "Midsection.",
+                "Hypogastrium."
+            ]
+        },
+        "repetition": 16,
+        "like": 87,
+        "practiced": 9,
+        "video": "./pic_video/Russian twist.mp4"
+    },
+    {
+        "name": "Slow sit-ups",
+        "photo": "./pic_video/Slow sit-ups.jpg",
+        "content": {
+            "key point": "Lie on a mat with your arms straight at the sides of your head, feet together, legs open, and abs working up.",
+            "breath": "Inhale as you go down, exhale as you rise.",
+            "feeling": "When getting up, the abdomen has a sudden contraction and tightness, and the abdomen has a squeezing feeling in the half stage behind getting up.",
+            "wrong": "Getting up often lifts the lower back from the ground, causing pain."
+        },
+        "tags": {
+            "muscle": [
+                "Midsection.",
+                "Hypogastrium."
+            ]
+        },
+        "repetition": 16,
+        "like": 76,
+        "practiced": 3,
+        "video": "./pic_video/Slow sit-ups.mp4"
+    },
+    {
+        "name": "Squat against the wall",
+        "photo": "./pic_video/Squat against the wall.jpg",
+        "content": {
+            "key point": "Place your feet shoulder width apart and your hands on your thighs",
+            "breath": "Keep breathing evenly throughout.",
+            "feeling": "Sore swelling in the knees and front thighs.",
+            "wrong": "Calf is not perpendicular to the floor."
+        },
+        "tags": {
+            "muscle": [
+                "Quadriceps muscles."
+            ]
+        },
+        "repetition": 10,
+        "like": 66,
+        "practiced": 5,
+        "video": "./pic_video/Squat against the wall.mp4"
+    }
+]
