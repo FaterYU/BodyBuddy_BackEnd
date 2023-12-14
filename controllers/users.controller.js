@@ -9,9 +9,9 @@ const Fits = db.fits;
 
 // Create and Save a new User
 exports.create = (req, res) => {
-  if (!req.body.userName) {
+  if (!req.body.email) {
     res.status(400).send({
-      message: "Content can not be empty!",
+      message: "email can not be empty!",
     });
     return;
   }
