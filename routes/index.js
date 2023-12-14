@@ -11,7 +11,7 @@ var routes = (app) => {
   // router.get("/", home);
   router.post("/upload", controller.upload);
   // router.get("/api/fileslist", controller.getListFiles);
-  router.post("/download", controller.download);
+  router.get("/download", controller.download);
   app.use("/api/files", router);
 };
 

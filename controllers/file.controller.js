@@ -71,7 +71,7 @@ const getListFiles = (req, res) => {
   });
 };
 const download = (req, res) => {
-  const fileName = req.body.name;
+  const fileName = req.query.name;
   //   const fileUploader = req.body.uploader;
   //   const fileType = req.body.type;
   const directoryPath = __basedir + "/uploads/";
@@ -84,8 +84,10 @@ const download = (req, res) => {
 
   // });
   res.sendFile(directoryPath + fileName, (err) => {
-    if (err) res.sendStatus(404);
-    else console.log("sent: " + directoryPath + fileName);
+    if (err) {
+      console.log(err);
+      res.sendStatus(404);
+    } else console.log("sent: " + directoryPath + fileName);
   });
 };
 module.exports = {

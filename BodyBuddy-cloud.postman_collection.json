@@ -1,0 +1,1519 @@
+{
+	"info": {
+		"_postman_id": "9f976501-81bb-402f-b89b-bcd93f55dd0d",
+		"name": "BodyBuddy-cloud",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20262088"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/findAll",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"findAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"LiHua\",\r\n    \"email\": \"google@gmail.com\",\r\n    \"password\": \"lihua123\",\r\n    \"phone\": \"123456789123\",\r\n    \"photo\": \"lihua.jpg\",\r\n    \"infomation\":{\r\n        \"gender\": \"male\",\r\n        \"weight\": 71.51,\r\n        \"height\": 190.02\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/create",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findOne",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/findOne",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"findOne"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/delete",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 1,\r\n    \"calendar\": {\r\n        \"calendarList\": [],\r\n        \"calendarActivityCount\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/update",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getName",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/getName",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"getName"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"google@gmail.com\",\r\n    \"password\": \"lihua123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/login",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "follow",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"followId\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/follow",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"follow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unfollow",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"followId\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/unfollow",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"unfollow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFollowList",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/getFollowList",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"getFollowList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFollowedList",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/getFollowedList",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"getFollowedList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "likeCourse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"courseId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/likeCourse",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"likeCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unlikeCourse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"courseId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/unlikeCourse",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"unlikeCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkLikeCourse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"courseId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/checkLikeCourse",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"checkLikeCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "likePose",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"poseId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/likePose",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"likePose"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unlikePose",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"poseId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/unlikePose",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"unlikePose"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkLikePose",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"courseId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/checkLikePose",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"checkLikePose"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "likeMoment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"momentId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/likeMoment",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"likeMoment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unlikeMoment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"momentId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/unlikeMoment",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"unlikeMoment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkLikeMoment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"momentId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/checkLikeMoment",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"checkLikeMoment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMomentFollowLikeList",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"momentId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/getMomentFollowLikeList",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"getMomentFollowLikeList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "globalSearch",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"keyword\": \"Push\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/users/globalSearch",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"globalSearch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCalendarActivity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "bodybuddy.fater.top:80/api/users/getCalendarActivity",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"getCalendarActivity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addCalendarActivity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"activityDate\": {\r\n        \"year\": 2023,\r\n        \"month\": 12,\r\n        \"day\": 6\r\n    },\r\n    \"activityStartTime\": {\r\n        \"hour\": 12,\r\n        \"minute\": 12\r\n    },\r\n    \"activityEndTime\": {\r\n        \"hour\": 22,\r\n        \"minute\": 12\r\n    },\r\n    \"activityContent\": \"I am activity\",\r\n    \"activityCourseId\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "bodybuddy.fater.top:80/api/users/addCalendarActivity",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"addCalendarActivity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCalendarActivity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4,\r\n    \"activityId\": 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "bodybuddy.fater.top:80/api/users/deleteCalendarActivity",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"users",
+								"deleteCalendarActivity"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "courses",
+			"item": [
+				{
+					"name": "createPose",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Push-up\",\r\n    \"photo\": \"push_up.jpg\",\r\n    \"content\": {\r\n        \"key point\": \"Push-ups on a mat, back straight, body in a straight line when viewed from the side, hands propped up on either side of the chest, slightly wider than shoulder width apart. Bend your arms until your elbows are slightly higher than your torso, and then extend your arms up and back down.\",\r\n        \"breath\": \"Bend the arm and inhale, extend the arm and exhale.\",\r\n        \"feeling\": \"Soreness in the chest, anterior shoulder and posterior aspect of the great arm.\",\r\n        \"wrong\": \"Hyperextension and locking of the elbow joint during arm extension. Collapsing or puckering of the hips during training.\"\r\n    },\r\n    \"tags\": {\r\n        \"muscle\": [\r\n            \"triceps muscle of arm\",\r\n            \"Medial and inferior fasciculus pectoralis\"\r\n        ]\r\n    },\r\n    \"repetition\": 12,\r\n    \"like\": 581,\r\n    \"practiced\": 7,\r\n    \"video\": \"push_up.mp4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/courses/createPose",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"courses",
+								"createPose"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAllPose",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/courses/findAllPose",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"courses",
+								"findAllPose"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePose",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"push-up\",\r\n    \"photo\": \"push_up.jpg\",\r\n    \"video\": \"push_up.mp4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/courses/updatePose",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"courses",
+								"updatePose"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePose",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/courses/deletePose",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"courses",
+								"deletePose"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAllCourse",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/courses/findAllCourse",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"courses",
+								"findAllCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createCourse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Push-up training • Upper body strength burst more easily!\",\r\n    \"photo\": \"push_up_training.jpg\",\r\n    \"content\": {\r\n        \"poseList\": [1,1,1],\r\n        \"description\": \"This class will be the final step in your metamorphosis from 'Patch Push-Up' to 'Standard Push-Up' trainer! Strengthen your upper body with bottom pauses and explosive breakthrough exercises to easily hold up a standard push-up. Once you can easily complete this session or 3-5 standard push-ups in a single session, you can move on to the K3 Push-up Challenge! training, and reap the benefits of tight, powerful muscle tone.\",\r\n        \"class\": [\"Muscle strength\", \"Push-up\"],\r\n        \"suitable\": [\"Introductory push-up trainer\"],\r\n        \"prepare\": [\"Don't eat too much before training, or training may cause abdominal discomfort.\"],\r\n        \"reaction\": [\"It is normal to experience shortness of breath and localised muscle soreness during training; if you are unable to complete the training or it is very difficult to do so, it means that the course is too difficult for you at this stage and it is recommended that you choose a simpler muscle strength training course.\"]\r\n    },\r\n    \"duration\": 660,\r\n    \"infomation\": {\r\n        \"calorie\": 46,\r\n        \"practiced\": 792000,\r\n        \"tags\": [\r\n            \"vip\"\r\n        ],\r\n        \"score\": 8.6,\r\n        \"level\": 2\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/courses/createCourse",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"courses",
+								"createCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCourse",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"duration\": 661\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/courses/updateCourse",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"courses",
+								"updateCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCourse",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/courses/deleteCourse",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"courses",
+								"deleteCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCourseList",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // uid 为可选，若不传则不会有用户已完成多少次的字段userPracticed\r\n    \"uid\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/courses/getCourseList",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"courses",
+								"getCourseList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCourseNameById",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/courses/getCourseNameById",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"courses",
+								"getCourseNameById"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "moments",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/moments/findAll",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"moments",
+								"findAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findOne",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/moments/findOne",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"moments",
+								"findOne"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"author\": 5,\r\n    \"photo\": \"moment_2.jpg\",\r\n    \"content\": {\r\n        \"title\": \"Today is a good day!\",\r\n        \"text\": \"Tomorrow is another day!\",\r\n        \"type\": \"photo\",\r\n        \"photo\": [\"moment_1.jpg\", \"moment_2.jpg\"],\r\n        \"video\": [],\r\n        \"mention\": [1]\r\n    },\r\n    \"tags\": {\r\n        \"tagsList\": [\"daily\",\"push-up\"]\r\n    },\r\n    \"like\": 2,\r\n    \"comment\": {\r\n        \"commentList\": [\r\n            {\r\n                \"author\": 1,\r\n                \"content\": \"Good moment!\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/moments/create",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"moments",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"like\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/moments/update",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"moments",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/moments/delete",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"moments",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMomentByAuthor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"author\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/moments/getMomentByAuthor",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"moments",
+								"getMomentByAuthor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFollowMoment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/moments/getFollowMoment",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"moments",
+								"getFollowMoment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "fits",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/fits/findAll",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"fits",
+								"findAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": 4,\r\n    \"courseId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/fits/create",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"fits",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneFitById",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/fits/getOneFitById",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"fits",
+								"getOneFitById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findListByUserId",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/fits/findListByUserId",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"fits",
+								"findListByUserId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteByFitsId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/fits/deleteByFitsId",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"fits",
+								"deleteByFitsId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setVideoByPoseIdx",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"poseIdx\": 0,\r\n    \"video\": \"capture0001.mp4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/fits/setVideoByPoseIdx",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"fits",
+								"setVideoByPoseIdx"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneFitScoreById",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/fits/getOneFitScoreById",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"fits",
+								"getOneFitScoreById"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "files",
+			"item": [
+				{
+					"name": "upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"description": "字段为file，选择文件",
+									"type": "file",
+									"src": "/C:/Users/10422/Desktop/Screenshot_1702366717.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/files/upload",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"files",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "download",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"1702318893347BodyBuddy.postman_collection.json\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://bodybuddy.fater.top/api/files/download",
+							"protocol": "http",
+							"host": [
+								"bodybuddy.fater.top"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"files",
+								"download"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
