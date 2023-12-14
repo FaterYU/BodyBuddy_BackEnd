@@ -326,22 +326,22 @@ def insert_moment_data(moment_data):
         db.commit()
 
 if __name__ == '__main__':
-    pose_data_path = 'data/createPose.json'
+    pose_data_path = './sh/data/createPose.json'
     pose_data = read_data(pose_data_path)
     format_pose = format_pose_data(pose_data)
     insert_pose_data(format_pose)
     
-    course_data_path = 'data/createCourse.json'
+    course_data_path = './sh/data/createCourse.json'
     course_data = read_data(course_data_path)
     format_course = format_course_data(course_data)
     insert_course_data(format_course)
     
-    user_data_path = 'data/createUser.json'
+    user_data_path = './sh/data/createUser.json'
     user_data = read_data(user_data_path)
     format_user = format_user_data(user_data)
     insert_user_data(format_user)
     
-    moment_data_path = 'data/createMoment.json'
+    moment_data_path = './sh/data/createMoment.json'
     moment_data = read_data(moment_data_path)
     format_moment = format_moment_data(moment_data)
     insert_moment_data(format_moment)
