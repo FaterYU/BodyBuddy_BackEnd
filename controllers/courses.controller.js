@@ -230,3 +230,16 @@ exports.getCourseNameById = (req, res) => {
       console.log(err);
     });
 };
+exports.getCourseById = (req, res) => {
+  Courses.findOne({
+    where: {
+      id: req.body.id,
+    },
+  })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

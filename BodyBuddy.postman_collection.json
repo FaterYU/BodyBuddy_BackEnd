@@ -1033,6 +1033,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "getCourseById",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:12647/api/courses/getCourseById",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"courses",
+								"getCourseById"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

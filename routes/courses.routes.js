@@ -12,6 +12,7 @@ module.exports = (app) => {
   router.delete("/deleteCourse", courses.deleteCourse);
   router.post("/getCourseList", courses.getCourseList);
   router.post("/getCourseNameById", courses.getCourseNameById);
+  router.post("/getCourseById", courses.getCourseById);
 
   app.use("/api/courses", router);
 };
