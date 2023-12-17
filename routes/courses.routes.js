@@ -13,6 +13,8 @@ module.exports = (app) => {
   router.post("/getCourseList", courses.getCourseList);
   router.post("/getCourseNameById", courses.getCourseNameById);
   router.post("/getCourseById", courses.getCourseById);
+  router.post("/getLastCourseList", courses.getLastCourseList);
+  router.post("/getRecommendCourseList", courses.getRecommendCourseList);
 
   app.use("/api/courses", router);
 };

@@ -9,5 +9,6 @@ module.exports = (app) => {
   router.put("/setVideoByPoseIdx", fits.setVideoByPoseIdx);
   router.post("/getOneFitScoreById", fits.getOneFitScoreById);
   router.post("/getScore", fits.getScore);
+  router.post("/getLongTimeData", fits.getLongTimeData);
   app.use("/api/fits", router);
 };

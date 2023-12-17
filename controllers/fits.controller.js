@@ -233,3 +233,53 @@ exports.getScore = (req, res) => {
       });
     });
 };
+exports.getLongTimeData = (req, res) => {
+  const id = req.body.id;
+  Fits.findAll({ where: { userId: id } })
+    .then((data) => {
+      var courseList = [];
+      var dayList = new Set();
+      var dayCount = 0;
+      for (var i = 0; i < data.length; i++) {
+        courseList.push(data[i].courseId);
+        if (!dayList.has(data[i].createdAt.getDate())) {
+          dayList.add(data[i].createdAt.getDate());
+          dayCount++;
+        }
+      }
+      return { courseList: courseList, dayCount: dayCount };
+    })
+    .then(async (data) => {
+      var courseData = [];
+      await Promise.all(
+        data.courseList.map(async (courseId) => {
+          await Courses.findOne({
+            attributes: ["duration", "infomation"],
+            where: { id: courseId },
+          }).then((result) => {
+            courseData.push(result);
+          });
+        })
+      );
+      var resultData = {
+        totalDuration: 0,
+        totalCalorie: 0,
+        totalDay: data.dayCount,
+      };
+      courseData.forEach((course) => {
+        resultData.totalDuration += course.duration;
+        resultData.totalCalorie += course.infomation.calorie;
+      });
+      resultData.totalDuration = resultData.totalDuration / 60;
+      return resultData;
+    })
+    .then((longData) => {
+      res.send(longData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving Fit with id=" + id,
+      });
+    });
+};
