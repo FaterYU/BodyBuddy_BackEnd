@@ -8,6 +8,10 @@ exports.findAll = (req, res) => {
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
   Moments.findAll({ where: condition, order: [["updatedAt", "DESC"]] })
     .then((data) => {
+      var data = JSON.parse(JSON.stringify(data));
+      for (var i = 0; i < data.length; i++) {
+        data[i]["showId"] = i + 1;
+      }
       res.send(data);
     })
     .catch((err) => {
@@ -153,6 +157,10 @@ exports.getFollowMoment = (req, res) => {
         })
           .then((data) => {
             if (data) {
+              var data = JSON.parse(JSON.stringify(data));
+              for (var i = 0; i < data.length; i++) {
+                data[i]["showId"] = i + 1;
+              }
               res.send(data);
             } else {
               res.status(404).send({
