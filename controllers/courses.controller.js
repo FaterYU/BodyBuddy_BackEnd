@@ -86,30 +86,8 @@ exports.deletePose = (req, res) => {
 };
 exports.findAllCourse = (req, res) => {
   Courses.findAll()
-    .then(async (data) => {
-      const result = [];
-      await Promise.all(
-        data.map(async (course) => {
-          const uniquePoseList = [...new Set(course.content.poseList)];
-          await Promise.all(
-            uniquePoseList.map(async (poseId) => {
-              await Poses.findOne({
-                where: {
-                  id: poseId,
-                },
-              }).then((pose) => {
-                for (var i = 0; i < course.content.poseList.length; i++) {
-                  if (course.content.poseList[i] == poseId) {
-                    course.content.poseList[i] = pose;
-                  }
-                }
-              });
-            })
-          );
-          result.push(course);
-        })
-      );
-      res.send(result);
+    .then((data) => {
+      res.send(data);
     })
     .catch((err) => {
       console.log(err);
@@ -258,7 +236,23 @@ exports.getCourseById = (req, res) => {
       id: req.body.id,
     },
   })
-    .then((data) => {
+    .then(async (data) => {
+      const uniquePoseList = [...new Set(data.content.poseList)];
+      await Promise.all(
+        uniquePoseList.map(async (poseId) => {
+          await Poses.findOne({
+            where: {
+              id: poseId,
+            },
+          }).then((pose) => {
+            for (var i = 0; i < data.content.poseList.length; i++) {
+              if (data.content.poseList[i] == poseId) {
+                data.content.poseList[i] = pose;
+              }
+            }
+          });
+        })
+      );
       res.send(data);
     })
     .catch((err) => {
