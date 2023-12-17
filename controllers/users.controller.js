@@ -796,7 +796,9 @@ exports.globalSearch = (req, res) => {
     .then((data) => {
       result.poses = data;
       return Moments.findAll({
-        where: { content: { [Op.like]: `%${keyword}%` } },
+        where: {
+          content: { [Op.like]: db.Sequelize.literal(`'%${keyword}%'`) },
+        },
         attributes: ["id", "content", "photo", "author"],
       });
     })
