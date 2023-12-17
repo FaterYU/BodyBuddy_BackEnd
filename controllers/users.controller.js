@@ -799,7 +799,7 @@ exports.globalSearch = (req, res) => {
         where: {
           content: { [Op.like]: db.Sequelize.literal(`'%${keyword}%'`) },
         },
-        attributes: ["id", "content", "photo", "author"],
+        attributes: ["id", "content", "photo", "author", "updatedAt"],
       });
     })
     .then((data) => {
