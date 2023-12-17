@@ -951,7 +951,7 @@ exports.addCalendarActivity = (req, res) => {
       );
       var flag = false;
       calendarList.forEach((item) => {
-        console.log(date, date.getDate(), calendarDate, calendarDate.getDate());
+        const date = new Date(item.date);
         if (date.getDate() == calendarDate.getDate()) {
           item.activityList.push(calendarActivity);
           flag = true;
