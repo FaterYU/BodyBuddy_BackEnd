@@ -210,13 +210,6 @@ exports.getScore = (req, res) => {
   const avgScore = scoreList.reduce((a, b) => a + b) / scoreList.length;
   Fits.findByPk(id)
     .then((data) => {
-      if (!data) {
-        res.status(400).send({
-          message: "Fit not found with id " + id,
-        });
-        return;
-      }
-
       return Fits.update(
         {
           status: "done",
