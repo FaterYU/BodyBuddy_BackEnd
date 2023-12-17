@@ -8,6 +8,6 @@ module.exports = (app) => {
   router.delete("/deleteByFitsId", fits.deleteByFitsId);
   router.put("/setVideoByPoseIdx", fits.setVideoByPoseIdx);
   router.post("/getOneFitScoreById", fits.getOneFitScoreById);
-  router.get("/getRandomScore", fits.getRandomScore);
+  router.post("/getScore", fits.getScore);
   app.use("/api/fits", router);
 };

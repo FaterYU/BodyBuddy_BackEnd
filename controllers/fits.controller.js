@@ -200,11 +200,43 @@ exports.getOneFitScoreById = (req, res) => {
     });
 };
 
-exports.getRandomScore = (req, res) => {
+exports.getScore = (req, res) => {
   const id = req.body.id;
   var scoreList = [];
   for (var i = 0; i < 100; i++) {
     scoreList.push(Math.random() * 40 + 50);
   }
-  res.send(scoreList);
+  const scoreListCopy = scoreList;
+  const avgScore = scoreList.reduce((a, b) => a + b) / scoreList.length;
+  Fits.findByPk(id)
+    .then((data) => {
+      if (!data) {
+        res.status(400).send({
+          message: "Fit not found with id " + id,
+        });
+        return;
+      }
+
+      return Fits.update(
+        {
+          status: "done",
+          score: {
+            poseScoreList: data.score.poseScoreList,
+            totalScore: avgScore,
+          },
+        },
+        {
+          where: { id: id },
+        }
+      );
+    })
+    .then((data) => {
+      res.send(scoreListCopy);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error updating Fit with id=" + id,
+      });
+    });
 };
