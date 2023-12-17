@@ -101,8 +101,8 @@ def insert_pose_data(pose_data):
                 '{}'
             )
         """.format(
-            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
-            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
+            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time() - 24*60*60)),
+            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time() - 24*60*60)),
             pose['name'].replace("'", "\\'"),
             pose['photo'].replace("'", "\\'"),
             pose['content'].replace("'", "\\'"),
@@ -160,8 +160,8 @@ def insert_course_data(course_data):
                 '{}'
             )
         """.format(
-            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
-            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
+            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time() - 24*60*60)),
+            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time() - 24*60*60)),
             course['name'].replace("'", "\\'"),
             course['photo'].replace("'", "\\'"),
             course['content'].replace("'", "\\'"),
@@ -240,8 +240,8 @@ def insert_user_data(user_data):
                 '{}'
             )
         """.format(
-            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
-            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
+            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time() - 24*60*60)),
+            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time() - 24*60*60)),
             user['userName'].replace("'", "\\'"),
             user['email'].replace("'", "\\'"),
             user['phone'].replace("'", "\\'"),
@@ -254,7 +254,7 @@ def insert_user_data(user_data):
             user['infomation'].replace("'", "\\'"),
             user['level'].replace("'", "\\'"),
             user['feature'].replace("'", "\\'"),
-            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time() - 24*60*60))
         )
         sqlList.append(sql)
     for sql in sqlList:
@@ -310,15 +310,15 @@ def insert_moment_data(moment_data):
                 '{}'
             )
         """.format(
-            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
-            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
+            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time() - 24*60*60)),
+            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time() - 24*60*60)),
             moment['author'],
             moment['photo'].replace("'", "\\'"),
             moment['content'].replace("'", "\\'"),
             moment['tags'].replace("'", "\\'"),
             moment['like'],
             moment['comment'].replace("'", "\\'"),
-            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time() - 24*60*60))
         )
         sqlList.append(sql)
     for sql in sqlList:
