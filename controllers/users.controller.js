@@ -790,7 +790,7 @@ exports.globalSearch = (req, res) => {
       result.courses = courseList;
       return Poses.findAll({
         where: { name: { [Op.like]: `%${keyword}%` } },
-        attributes: ["id", "name", "photo"],
+        attributes: ["id", "name", "photo", "tags", "like"],
       });
     })
     .then((data) => {
