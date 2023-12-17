@@ -199,3 +199,12 @@ exports.getOneFitScoreById = (req, res) => {
       });
     });
 };
+
+exports.getRandomScore = (req, res) => {
+  const id = req.body.id;
+  var scoreList = [];
+  for (var i = 0; i < 100; i++) {
+    scoreList.push(Math.random() * 40 + 50);
+  }
+  res.send(scoreList);
+};
