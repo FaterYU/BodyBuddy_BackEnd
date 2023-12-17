@@ -734,10 +734,10 @@ exports.globalSearch = (req, res) => {
     moments: [],
     fits: [],
   };
-  Users.findByPk(uid)
+  Users.findByPk(uid ? uid : 1)
     .then((data) => {
       var follow = data.follow.followList;
-      return follow;
+      return uid ? follow : [];
     })
     .then((data) => {
       const follow = data;
