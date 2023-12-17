@@ -832,7 +832,7 @@ exports.getCalendarActivity = async (req, res) => {
       calendarList.map(async (item) => {
         const date = new Date(item.date);
         const year = date.getFullYear();
-        const month = date.getMonth();
+        const month = date.getMonth() + 1;
         const day = date.getDate();
 
         const activityDate = {
@@ -946,7 +946,7 @@ exports.addCalendarActivity = (req, res) => {
       calendarActivity.activityId = calendarActivityCount;
       const calendarDate = new Date(
         activityDate.year,
-        activityDate.month,
+        activityDate.month - 1,
         activityDate.day
       );
       var flag = false;
