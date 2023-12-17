@@ -832,7 +832,7 @@ exports.getCalendarActivity = async (req, res) => {
       calendarList.map(async (item) => {
         const date = new Date(item.date);
         const year = date.getFullYear();
-        const month = date.getMonth() + 1;
+        const month = date.getMonth();
         const day = date.getDate();
 
         const activityDate = {
@@ -946,27 +946,29 @@ exports.addCalendarActivity = (req, res) => {
       calendarActivity.activityId = calendarActivityCount;
       const calendarDate = new Date(
         activityDate.year,
-        activityDate.month - 1,
+        activityDate.month,
         activityDate.day
       );
       var flag = false;
       calendarList.forEach((item) => {
-        const date = new Date(item.date);
-        if (date.getTime() == calendarDate.getTime()) {
+        console.log(date, date.getDate(), calendarDate, calendarDate.getDate());
+        if (date.getDate() == calendarDate.getDate()) {
           item.activityList.push(calendarActivity);
           flag = true;
         }
       });
       if (!flag) {
         calendarList.push({
-          date: calendarDate,
+          date: calendarDate.toISOString(),
           activityList: [calendarActivity],
         });
       }
       calendarList.sort((a, b) => {
-        if (a.date.getTime() < b.date.getTime()) {
+        aDate = new Date(a.date);
+        bDate = new Date(b.date);
+        if (aDate < bDate) {
           return -1;
-        } else if (a.date.getTime() > b.date.getTime()) {
+        } else if (aDate > bDate) {
           return 1;
         } else {
           return 0;
