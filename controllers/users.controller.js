@@ -734,12 +734,27 @@ exports.globalSearch = (req, res) => {
     moments: [],
     fits: [],
   };
-  Users.findAll({
-    where: { userName: { [Op.like]: `%${keyword}%` } },
-    attributes: ["uid", "userName", "photo"],
-  })
+  Users.findByPk(uid)
     .then((data) => {
-      result.users = data;
+      var follow = data.follow.followList;
+      return follow;
+    })
+    .then((data) => {
+      const follow = data;
+      Users.findAll({
+        where: { userName: { [Op.like]: `%${keyword}%` } },
+        attributes: ["uid", "userName", "photo"],
+      }).then((data) => {
+        result.users = [];
+        data.forEach((user) => {
+          result.users.push({
+            uid: user.uid,
+            userName: user.userName,
+            photo: user.photo,
+            isFollowed: follow.includes(user.uid),
+          });
+        });
+      });
       return Courses.findAll({
         where: { name: { [Op.like]: `%${keyword}%` } },
         attributes: ["id", "name", "photo", "duration", "infomation"],

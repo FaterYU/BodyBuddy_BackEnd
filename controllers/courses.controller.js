@@ -259,3 +259,96 @@ exports.getCourseById = (req, res) => {
       console.log(err);
     });
 };
+exports.getLastCourseList = (req, res) => {
+  const userId = req.body.uid;
+  if (!userId) {
+    res.send([]);
+    return;
+  }
+  Fits.findAll({
+    attributes: ["courseId"],
+    where: {
+      userId: userId,
+    },
+    order: [["updatedAt", "DESC"]],
+    limit: 2,
+  })
+    .then((data) => {
+      var courseIdList = [];
+      data.forEach((course) => {
+        courseIdList.push(course.courseId);
+      });
+      return Courses.findAll({
+        attributes: ["id", "name", "photo", "duration", "infomation"],
+        where: {
+          id: { [Op.in]: courseIdList },
+        },
+      });
+    })
+    .then((data) => {
+      const courseList = [];
+      data.forEach((course) => {
+        courseList.push({
+          id: course.id,
+          name: course.name,
+          photo: course.photo,
+          duration: course.duration / 60,
+          calorie: course.infomation.calorie,
+        });
+      });
+      res.send(courseList);
+    })
+
+    .catch((err) => {
+      console.log(err);
+    });
+};
+exports.getRecommendCourseList = (req, res) => {
+  const userId = req.body.uid;
+  Fits.findAll(
+    userId
+      ? {
+          attributes: ["courseId"],
+          where: {
+            userId: userId,
+          },
+          order: [["updatedAt", "DESC"]],
+          limit: 2,
+          offset: 2,
+        }
+      : {
+          attributes: ["courseId"],
+          order: [["updatedAt", "DESC"]],
+          limit: 4,
+          offset: 0,
+        }
+  )
+    .then((data) => {
+      var courseIdList = [];
+      data.forEach((course) => {
+        courseIdList.push(course.courseId);
+      });
+      return Courses.findAll({
+        attributes: ["id", "name", "photo", "duration", "infomation"],
+        where: {
+          id: { [Op.in]: courseIdList },
+        },
+      });
+    })
+    .then((data) => {
+      const courseList = [];
+      data.forEach((course) => {
+        courseList.push({
+          id: course.id,
+          name: course.name,
+          photo: course.photo,
+          duration: course.duration / 60,
+          calorie: course.infomation.calorie,
+        });
+      });
+      res.send(courseList);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
