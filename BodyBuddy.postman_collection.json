@@ -217,7 +217,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"uid\": 4,\r\n    \"followId\": 5\r\n}",
+							"raw": "{\r\n    \"uid\": 1,\r\n    \"followId\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -637,7 +637,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"uid\": 4,\r\n    \"keyword\": \"Push\"\r\n}",
+							"raw": "{\r\n    \"uid\": 1,\r\n    \"keyword\": \"AliceSmith\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1063,6 +1063,64 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "getLastCourseList",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:12647/api/courses/getLastCourseList",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"courses",
+								"getLastCourseList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRecommendCourseList",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uid\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:12647/api/courses/getRecommendCourseList",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"courses",
+								"getRecommendCourseList"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1471,6 +1529,64 @@
 								"api",
 								"fits",
 								"getOneFitScoreById"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getScore",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:12647/api/fits/getRandomScore",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"fits",
+								"getRandomScore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getLongTimeData",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:12647/api/fits/getLongTimeData",
+							"host": [
+								"localhost"
+							],
+							"port": "12647",
+							"path": [
+								"api",
+								"fits",
+								"getLongTimeData"
 							]
 						}
 					},
