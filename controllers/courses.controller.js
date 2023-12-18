@@ -271,7 +271,6 @@ exports.getLastCourseList = (req, res) => {
       userId: userId,
     },
     order: [["updatedAt", "DESC"]],
-    limit: 2,
   })
     .then((data) => {
       var courseIdList = [];
@@ -287,16 +286,20 @@ exports.getLastCourseList = (req, res) => {
     })
     .then((data) => {
       const courseList = [];
+      var countSet = new Set();
       data.forEach((course) => {
-        courseList.push({
-          id: course.id,
-          name: course.name,
-          photo: course.photo,
-          duration: course.duration / 60,
-          calorie: course.infomation.calorie,
-        });
+        if (!countSet.has(course.id)) {
+          countSet.add(course.id);
+          courseList.push({
+            id: course.id,
+            name: course.name,
+            photo: course.photo,
+            duration: course.duration / 60,
+            calorie: course.infomation.calorie,
+          });
+        }
       });
-      res.send(courseList);
+      res.send(courseList.length > 1 ? courseList.slice(0, 2) : courseList);
     })
 
     .catch((err) => {
@@ -313,14 +316,10 @@ exports.getRecommendCourseList = (req, res) => {
             userId: userId,
           },
           order: [["updatedAt", "DESC"]],
-          limit: 2,
-          offset: 2,
         }
       : {
           attributes: ["courseId"],
           order: [["updatedAt", "DESC"]],
-          limit: 4,
-          offset: 0,
         }
   )
     .then((data) => {
@@ -337,16 +336,24 @@ exports.getRecommendCourseList = (req, res) => {
     })
     .then((data) => {
       const courseList = [];
+      var countSet = new Set();
       data.forEach((course) => {
-        courseList.push({
-          id: course.id,
-          name: course.name,
-          photo: course.photo,
-          duration: course.duration / 60,
-          calorie: course.infomation.calorie,
-        });
+        if (!countSet.has(course.id)) {
+          countSet.add(course.id);
+          courseList.push({
+            id: course.id,
+            name: course.name,
+            photo: course.photo,
+            duration: course.duration / 60,
+            calorie: course.infomation.calorie,
+          });
+        }
       });
-      res.send(courseList);
+      if (userId) {
+        res.send(courseList.length > 1 ? courseList.slice(0, 2) : courseList);
+      } else {
+        res.send(courseList.length > 3 ? courseList.slice(0, 4) : courseList);
+      }
     })
     .catch((err) => {
       console.log(err);
