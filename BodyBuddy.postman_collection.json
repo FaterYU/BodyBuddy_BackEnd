@@ -217,7 +217,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"uid\": 1,\r\n    \"followId\": 1\r\n}",
+							"raw": "{\r\n    \"uid\": 1,\r\n    \"followId\": 3\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -277,7 +277,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"uid\": 4\r\n}",
+							"raw": "{\r\n    \"uid\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -307,7 +307,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"uid\": 5\r\n}",
+							"raw": "{\r\n    \"uid\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
