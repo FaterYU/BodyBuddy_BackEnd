@@ -267,6 +267,7 @@ exports.getLastCourseList = (req, res) => {
   }
   Fits.findAll({
     attributes: ["courseId"],
+    group: ["courseId"],
     where: {
       userId: userId,
     },
@@ -309,6 +310,7 @@ exports.getRecommendCourseList = (req, res) => {
     userId
       ? {
           attributes: ["courseId"],
+          group: ["courseId"],
           where: {
             userId: userId,
           },
@@ -318,6 +320,7 @@ exports.getRecommendCourseList = (req, res) => {
         }
       : {
           attributes: ["courseId"],
+          group: ["courseId"],
           order: [["updatedAt", "DESC"]],
           limit: 4,
           offset: 0,
