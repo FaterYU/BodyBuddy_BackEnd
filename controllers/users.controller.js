@@ -292,11 +292,19 @@ exports.getFollowList = (req, res) => {
 };
 exports.getFollowedList = (req, res) => {
   const uid = req.body.uid;
-  Users.findAll({
-    where: { follow: db.Sequelize.literal(`follow like '%${uid}%'`) },
-    attributes: ["uid", "userName", "photo"],
-  })
+  var followList = [];
+  Users.findByPk(uid)
     .then((data) => {
+      followList = data.follow.followList;
+      return Users.findAll({
+        where: { follow: db.Sequelize.literal(`follow like '%${uid}%'`) },
+        attributes: ["uid", "userName", "photo"],
+      });
+    })
+    .then((data) => {
+      for (var i = 0; i < data.length; i++) {
+        data[i]["follow"] = followList.includes(data[i].uid);
+      }
       res.send(data);
     })
     .catch((err) => {

@@ -187,3 +187,45 @@ exports.getFollowMoment = (req, res) => {
       });
     });
 };
+exports.addComment = (req, res) => {
+  const id = req.body.id;
+  const comment = req.body.comment;
+  Moments.findByPk(id)
+    .then((data) => {
+      if (data) {
+        const commentList = data.comment.commentList;
+        commentList.push(comment);
+        Moments.update(
+          { comment: { commentList: commentList } },
+          { where: { id: id } }
+        )
+          .then((num) => {
+            if (num == 1) {
+              res.send({
+                message: "Moment was updated successfully.",
+              });
+            } else {
+              res.send({
+                message: `Cannot update Moment with id=${id}. Maybe Moment was not found or req.body is empty!`,
+              });
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            res.status(500).send({
+              message: `Error updating Moment with id=${id}`,
+            });
+          });
+      } else {
+        res.status(404).send({
+          message: `Cannot find Moments with id=${id}.`,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({
+        message: `Error retrieving Moments with id=${id}`,
+      });
+    });
+};

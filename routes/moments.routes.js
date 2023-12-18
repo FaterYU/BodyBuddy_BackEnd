@@ -8,6 +8,7 @@ module.exports = (app) => {
   router.delete("/delete", moments.delete);
   router.post("/getMomentByAuthor", moments.getMomentByAuthor);
   router.post("/getFollowMoment", moments.getFollowMoment);
+  router.post("/addComment", moments.addComment);
 
   app.use("/api/moments", router);
 };
