@@ -177,6 +177,7 @@ exports.getCourseList = (req, res) => {
           photo: course.photo,
           duration: course.duration / 60,
           calorie: course.infomation.calorie,
+          level: course.infomation.level,
         });
       });
       return courseList;
@@ -296,12 +297,29 @@ exports.getLastCourseList = (req, res) => {
             photo: course.photo,
             duration: course.duration / 60,
             calorie: course.infomation.calorie,
+            level: course.infomation.level,
           });
         }
       });
-      res.send(courseList.length > 1 ? courseList.slice(0, 2) : courseList);
+      return courseList.length > 1 ? courseList.slice(0, 2) : courseList;
     })
-
+    .then(async (courseList) => {
+      if (userId) {
+        await Promise.all(
+          courseList.map(async (course) => {
+            await Fits.count({
+              where: {
+                userId: userId,
+                courseId: course.id,
+              },
+            }).then((num) => {
+              course.userPracticed = num;
+            });
+          })
+        );
+      }
+      res.send(courseList);
+    })
     .catch((err) => {
       console.log(err);
     });
@@ -346,14 +364,32 @@ exports.getRecommendCourseList = (req, res) => {
             photo: course.photo,
             duration: course.duration / 60,
             calorie: course.infomation.calorie,
+            level: course.infomation.level,
           });
         }
       });
       if (userId) {
-        res.send(courseList.length > 1 ? courseList.slice(0, 2) : courseList);
+        return courseList.length > 1 ? courseList.slice(0, 2) : courseList;
       } else {
-        res.send(courseList.length > 3 ? courseList.slice(0, 4) : courseList);
+        return courseList.length > 3 ? courseList.slice(0, 4) : courseList;
       }
+    })
+    .then(async (courseList) => {
+      if (userId) {
+        await Promise.all(
+          courseList.map(async (course) => {
+            await Fits.count({
+              where: {
+                userId: userId,
+                courseId: course.id,
+              },
+            }).then((num) => {
+              course.userPracticed = num;
+            });
+          })
+        );
+      }
+      res.send(courseList);
     })
     .catch((err) => {
       console.log(err);

@@ -777,6 +777,7 @@ exports.globalSearch = (req, res) => {
           photo: course.photo,
           duration: course.duration / 60,
           calorie: course.infomation.calorie,
+          level: course.infomation.level,
         });
       });
       return courseList;
