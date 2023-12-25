@@ -827,7 +827,11 @@ exports.globalSearch = (req, res) => {
       });
     })
     .then((data) => {
-      result.moments = data;
+      var showIdData = JSON.parse(JSON.stringify(data));
+      for (var i = 0; i < showIdData.length; i++) {
+        showIdData[i]["showId"] = i + 1;
+      }
+      result.moments = showIdData;
       res.send(result);
     })
     .catch((err) => {
