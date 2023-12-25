@@ -86,10 +86,10 @@ const download = (req, res) => {
   res.sendFile(directoryPath + fileName, (err) => {
     if (err) {
       console.log(err);
-      res.sendStatus(404);
+      next(err);
     } else {
-      res.status(200);
       console.log("Sent:", fileName);
+      next();
     }
   });
 };
