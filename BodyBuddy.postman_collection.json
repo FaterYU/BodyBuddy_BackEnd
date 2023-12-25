@@ -637,7 +637,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"uid\": 1,\r\n    \"keyword\": \"AliceSmith\"\r\n}",
+							"raw": "{\r\n    \"uid\": -1,\r\n    \"keyword\": \"AliceSmith\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1155,7 +1155,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1\r\n}",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"uid\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

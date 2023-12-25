@@ -23,10 +23,31 @@ exports.findAll = (req, res) => {
 };
 exports.findOne = (req, res) => {
   const id = req.body.id;
+  const uid = req.body?.uid;
   Moments.findByPk(id)
     .then((data) => {
       if (data) {
-        res.send(data);
+        if (uid) {
+          Users.findByPk(uid).then((data2) => {
+            if (data2) {
+              const follow = data2.follow.followList;
+              const isFollow = follow.includes(data.author);
+              const like = data2.feature?.likeMoment;
+              const isLike = like.includes(id);
+              res.send({
+                ...data.dataValues,
+                isFollow: isFollow,
+                isLike: isLike,
+              });
+            } else {
+              res.status(404).send({
+                message: `Cannot find User with uid=${uid}.`,
+              });
+            }
+          });
+        } else {
+          res.send(data);
+        }
       } else {
         res.status(404).send({
           message: `Cannot find Moments with id=${id}.`,
