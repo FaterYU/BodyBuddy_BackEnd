@@ -83,15 +83,7 @@ const download = (req, res) => {
   //   // }
 
   // });
-  res.sendFile(directoryPath + fileName, (err) => {
-    if (err) {
-      console.log(err);
-      next(err);
-    } else {
-      console.log("Sent:", fileName);
-      next();
-    }
-  });
+  res.sendFile(directoryPath + fileName);
 };
 module.exports = {
   upload,
