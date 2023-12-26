@@ -31,16 +31,27 @@ exports.create = (req, res) => {
     feature: { likeCourse: [], likePose: [], likeMoment: [] },
     LastLogin: new Date(),
   };
-  Users.create(users)
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the User.",
-      });
-    });
+  Users.findAll({
+    where: { email: users.email },
+    attributes: ["uid"],
+  }).then((data) => {
+    if (data.length > 0) {
+      res.status(400).send({ message: "Email already exists" });
+      return;
+    } else {
+      Users.create(users)
+        .then((data) => {
+          res.send(data);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).send({
+            message:
+              err.message || "Some error occurred while creating the User.",
+          });
+        });
+    }
+  });
 };
 // Retrieve all Users from the database.
 exports.findAll = (req, res) => {
