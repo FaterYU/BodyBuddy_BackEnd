@@ -172,7 +172,11 @@ exports.login = (req, res) => {
       }
     })
     .then((uid) => {
-      if (uid == null) return;
+      if (uid == null)
+        return {
+          promise: null,
+          uid: uid,
+        };
       return {
         promise: Users.update(
           { lastLogin: new Date() },
