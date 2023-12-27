@@ -23,6 +23,12 @@ exports.findAll = (req, res) => {
 };
 exports.findOne = (req, res) => {
   const id = req.body.id;
+  if (!id) {
+    res.status(400).send({
+      message: "id can not be empty!",
+    });
+    return;
+  }
   const uid = req.body?.uid;
   Moments.findByPk(id)
     .then((data) => {

@@ -233,9 +233,15 @@ exports.getCourseNameById = (req, res) => {
 };
 exports.getCourseById = (req, res) => {
   const userId = req.body.uid ? req.body.uid : null;
+  const courseId = req.body.id;
+  if (!courseId) {
+    res.status(404).send({
+      message: `Cannot find Course with id=${courseId}.`,
+    });
+  }
   Courses.findOne({
     where: {
-      id: req.body.id,
+      id: courseId,
     },
   })
     .then(async (data) => {
