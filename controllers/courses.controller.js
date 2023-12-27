@@ -280,6 +280,9 @@ exports.getCourseById = (req, res) => {
       }
     })
     .catch((err) => {
+      res.status(500).send({
+        message: `Error retrieving Course with id=${courseId}`,
+      });
       console.log(err);
     });
 };
