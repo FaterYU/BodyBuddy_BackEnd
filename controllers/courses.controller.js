@@ -232,6 +232,7 @@ exports.getCourseNameById = (req, res) => {
     });
 };
 exports.getCourseById = (req, res) => {
+  const userId = req.body.uid ? req.body.uid : null;
   Courses.findOne({
     where: {
       id: req.body.id,
@@ -254,7 +255,23 @@ exports.getCourseById = (req, res) => {
           });
         })
       );
-      res.send(data);
+      return data;
+    })
+    .then((course) => {
+      if (userId) {
+        Fits.count({
+          where: {
+            userId: userId,
+            courseId: course.id,
+          },
+        }).then((num) => {
+          var result = JSON.parse(JSON.stringify(course));
+          result.userPracticed = num;
+          res.send(result);
+        });
+      } else {
+        res.send(course);
+      }
     })
     .catch((err) => {
       console.log(err);
