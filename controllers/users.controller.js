@@ -379,6 +379,7 @@ exports.likeCourse = (req, res) => {
 };
 exports.unlikeCourse = (req, res) => {
   const uid = req.body.uid;
+  const courseId = req.body.courseId;
   Users.findByPk(uid)
     .then((data) => {
       if (!data) {
@@ -399,7 +400,6 @@ exports.unlikeCourse = (req, res) => {
       }
       likeCourse.splice(likeCourse.indexOf(courseId), 1);
       newFeature.likeCourse = likeCourse;
-      const courseId = req.body.courseId;
       Courses.findByPk(courseId)
         .then((data) => {
           if (!data) {
