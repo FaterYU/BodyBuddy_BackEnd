@@ -956,6 +956,7 @@ exports.getCalendarActivity = async (req, res) => {
 
 exports.addCalendarActivity = (req, res) => {
   const uid = req.body.uid;
+  const activityId = req.body.activityId;
   const activityDate = req.body.activityDate;
   const activityStartTime = req.body.activityStartTime;
   const activityEndTime = req.body.activityEndTime;
@@ -964,7 +965,7 @@ exports.addCalendarActivity = (req, res) => {
     ? req.body.activityCourseId
     : null;
   const calendarActivity = {
-    activityId: undefined,
+    activityId: activityId,
     activityDate: activityDate,
     activityStartTime: {
       hour: activityStartTime.hour,
@@ -987,6 +988,17 @@ exports.addCalendarActivity = (req, res) => {
       }
       const calendarList = data.calendar.calendarList;
       const calendarActivityCount = data.calendar.calendarActivityCount;
+      calendarList.forEach((item) => {
+        const activityList = item.activityList;
+        activityList.forEach((subitem) => {
+          if (subitem.activityId == activityId) {
+            activityList.splice(activityList.indexOf(subitem), 1);
+          }
+        });
+        if (activityList.length == 0) {
+          calendarList.splice(calendarList.indexOf(item), 1);
+        }
+      });
       calendarActivity.activityId = calendarActivityCount;
       const calendarDate = new Date(
         activityDate.year,
@@ -1026,8 +1038,9 @@ exports.addCalendarActivity = (req, res) => {
           },
         },
         { where: { uid: uid } }
-      );
-      res.send({ message: "Added" });
+      ).then((data) => {
+        res.send({ message: "Updated" });
+      });
     })
     .catch((err) => {
       console.log(err);
